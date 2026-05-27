@@ -1,1 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AWS Position Glossary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface2: #f0efe9;
+    --border: #e4e2d9;
+    --border2: #d0cec4;
+    --text: #1a1916;
+    --text2: #6b6960;
+    --text3: #9b9890;
+    --accent: #1a1916;
+    --stock-bg: #e8f0fe;
+    --stock-text: #1a3a8f;
+    --bond-bg: #e6f4ea;
+    --bond-text: #1a5c2e;
+    --alt-bg: #fef3e2;
+    --alt-text: #7a4a00;
+    --danger: #c0392b;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo-mark svg { width: 16px; height: 16px; fill: #fff; }
+
+  .logo-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text3);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .stat-val {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .stat-val.blue { color: #1a3a8f; }
+  .stat-val.green { color: #1a5c2e; }
+  .stat-val.amber { color: #7a4a00; }
+
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  input[type="text"], select, textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.85rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: var(--border2);
+    box-shadow: 0 0 0 3px rgba(26,25,22,0.06);
+  }
+
+  .search-wrap {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    stroke: var(--text3);
+    pointer-events: none;
+  }
+
+  .search-wrap input { padding-left: 2rem; }
+
+  select { min-width: 160px; cursor: pointer; }
+
+  button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+    padding: 0.55rem 1rem;
+  }
+
+  .btn-primary:hover { background: #333; border-color: #333; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text2);
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.75rem;
+  }
+
+  .btn-ghost:hover { background: var(--surface2); color: var(--text); }
+
+  .btn-danger {
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid transparent;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .btn-danger:hover { background: #fdf0ee; border-color: #f5c6c2; }
+
+  .cards { display: flex; flex-direction: column; gap: 8px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .card:hover { border-color: var(--border2); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .badge-stock { background: var(--stock-bg); color: var(--stock-text); }
+  .badge-bond { background: var(--bond-bg); color: var(--bond-text); }
+  .badge-alt { background: var(--alt-bg); color: var(--alt-text); }
+
+  .ticker {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text3);
+    flex-shrink: 0;
+    min-width: 52px;
+  }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    color: var(--text);
+  }
+
+  .chevron {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text3);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .chevron.open { transform: rotate(180deg); }
+
+  .card-body {
+    display: none;
+    padding: 0 1.1rem 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+
+  .card-body.open { display: block; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.9rem; }
+
+  .card-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 5px;
+  }
+
+  .card-section-text {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  .card-full { grid-column: 1 / -1; }
+
+  .holdings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .holding {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text3);
+    font-size: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    padding: 1.75rem;
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .form-row { margin-bottom: 0.9rem; }
+
+  .form-row label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text2);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .form-row textarea { height: 80px; resize: vertical; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    z-index: 300;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.2s;
+    pointer-events: none;
+  }
+
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    header { padding: 1rem; }
+    main { padding: 1rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .logo-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 16 16"><path d="M2 2h5v5H2zM9 2h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/></svg>
+    </div>
+    <div>
+      <div class="logo-text">AWS Position Glossary</div>
+      <div class="logo-sub">Investment Reference</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-primary" onclick="openModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add position
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search" placeholder="Search positions, tickers, holdings..." oninput="render()" />
+    </div>
+    <select id="filter" onchange="render()">
+      <option value="all">All asset classes</option>
+      <option value="Stocks">Stocks</option>
+      <option value="Bonds">Bonds</option>
+      <option value="Alternatives">Alternatives</option>
+    </select>
+  </div>
+
+  <div class="cards" id="cards"></div>
+</main>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h2 id="modal-title">Add new position</h2>
+    <div class="form-grid">
+      <div class="form-row">
+        <label>Position name</label>
+        <input type="text" id="f-name" placeholder="e.g. iShares S&P 500" />
+      </div>
+      <div class="form-row">
+        <label>Ticker</label>
+        <input type="text" id="f-ticker" placeholder="e.g. IVV" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Asset class</label>
+      <select id="f-class">
+        <option value="Stocks">Stocks</option>
+        <option value="Bonds">Bonds</option>
+        <option value="Alternatives">Alternatives</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>What it is</label>
+      <textarea id="f-what" placeholder="Brief description of the fund or position..."></textarea>
+    </div>
+    <div class="form-row">
+      <label>Why we own it</label>
+      <textarea id="f-why" placeholder="Investment rationale..."></textarea>
+    </div>
+    <div class="form-row">
+      <label>Where we own it</label>
+      <input type="text" id="f-where" placeholder="e.g. Across all Asset Allocation strategies" />
+    </div>
+    <div class="form-row">
+      <label>Largest holdings (comma separated)</label>
+      <input type="text" id="f-holdings" placeholder="e.g. AAPL (7.34%), MSFT (7.24%)" />
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="savePosition()">Save position</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const POSITIONS_KEY = 'aws_glossary_positions';
+
+const SEED = [
+  {id:1,name:"iShares S&P 500",ticker:"IVV",cls:"Stocks",what:"S&P 500 index fund.",why:"Cheap beta (market exposure). We want the return profile from large US companies and this is a very efficient way to get that exposure.",where:"Across all Asset Allocation strategies and Tactical Equity.",holdings:["AAPL (7.34%)","MSFT (7.24%)","AMZN (3.47%)","NVDA (3.21%)","GOOGL (2.12%)"]},
+  {id:2,name:"VanEck Vectors M* Wide Moat",ticker:"MOAT",cls:"Stocks",what:"US Large Cap ETF. Morningstar creates an index of companies they believe have a wide moat (sustainable competitive advantage), trading at the lowest price/fair value ratios.",why:"This active, factor-based screen has a proven track record of competing with the S&P 500. A fairly priced complement to our cheap core position.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["DIS (2.84%)","USB (2.81%)","MAS (2.73%)","GOOGL (2.73%)","WFC (2.68%)"]},
+  {id:3,name:"Schwab Large Cap Growth",ticker:"SCHG",cls:"Stocks",what:"Passive Large Cap ETF tracking the Dow Jones U.S. Large-Cap Growth Total Stock Market Index.",why:"Complement to IVV & Moat Core. Allows toggling between core/growth/value based on relative valuations, macro factors, or market conditions.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["AAPL (13.04%)","MSFT (12.85%)","NVDA (5.69%)","GOOGL (3.75%)","META (3.49%)"]},
+  {id:4,name:"Vanguard Value",ticker:"VTV",cls:"Stocks",what:"Passive Large Cap ETF tracking the CRSP US Large Cap Value Index, measuring the investment return of large-cap value stocks.",why:"Complement to IVV & Moat Large Cap Core. Allows toggling between core/growth/value based on relative valuations, macro factors, or market conditions.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["BRKB (3.82%)","UNH (3.04%)","XOM (2.60%)","JPM (2.48%)","JNJ (2.19%)"]},
+  {id:5,name:"Invesco High Quality Mid Cap",ticker:"XMHQ",cls:"Stocks",what:"MidCap Quality ETF tracking the S&P MidCap 400 Quality Index.",why:"High quality midcap exposure with a quality factor screen.",where:"",holdings:["CSL (4.95%)","EME (4.83%)","FIX (3.16%)","MANH (2.82%)","SFM (2.44%)"]},
+  {id:6,name:"Fidelity Mid Cap Select",ticker:"FMDE",cls:"Stocks",what:"Actively Managed Mid-Cap ETF that invests at least 80% of assets in common stocks included in the Russell Midcap Index.",why:"Active mid-cap management with broad Russell Midcap exposure.",where:"",holdings:["HWM (1.18%)","AXON (1.04%)","BK (1.03%)","RBLX (1.02%)","LNG (0.95%)"]},
+  {id:7,name:"iShares Core EAFE",ticker:"IEFA",cls:"Stocks",what:"Seeks to track investment results of large-, mid-, and small-cap developed market equities, excluding the U.S. and Canada. Tracks the MSCI EAFE IMI Index.",why:"Low cost exposure to a broad range of companies in Europe, Australia, Asia, and the Far East. Good way to diversify internationally and seek long-term growth.",where:"",holdings:["SAP (1.46%)","ASML (1.30%)","NESN (1.15%)","ROG (1.02%)","HSBA (1.02%)"]},
+  {id:8,name:"iShares Small Cap Factor",ticker:"SMLF",cls:"Stocks",what:"Seeks to track the STOXX U.S. Small Cap Equity Factor Index.",why:"Efficient access to U.S. small-cap stocks based on five factors: value, quality, momentum, low size, and low volatility.",where:"",holdings:["EME (1.08%)","CVNA (0.87%)","JBL (0.83%)","IBKR (0.70%)","NTNX (0.62%)"]},
+  {id:9,name:"Goldman Sachs GQG Partners Intl Opps",ticker:"GSIMX",cls:"Stocks",what:"Tracks the MSCI ACWI ex USA Index using a bottom-up, growth-at-reasonable-price approach focusing on fundamentals across developed and emerging markets.",why:"Offers international portfolio diversification by seeking to invest in enduring and compelling ideas across developed and emerging market opportunities.",where:"",holdings:["PM (7.36%)","TSX: ENB (3.35%)","LON:BATS (3.22%)","CB (2.92%)","LON:AZN (2.87%)"]},
+  {id:10,name:"Goldman Sachs GQG Partners Intl Equity Income",ticker:"GSIKX",cls:"Stocks",what:"Tracks the MSCI EAFE benchmark, building the portfolio one company at a time by looking for stocks trading at a discount with potential for strong returns.",why:"Defensively-tilted international equity allocation balancing dividend income with steady capital appreciation. Strong complement for global exposure with a value and income focus.",where:"",holdings:["LON: SHEL (5.06%)","LON: HSBA (4.12%)","CCEP (3.93%)","TYO: 8316 (3.63%)"]},
+  {id:11,name:"WisdomTree EM High Dividend",ticker:"DEM",cls:"Stocks",what:"Seeks to track the investment results of high-dividend-yielding companies in the emerging markets region.",why:"Way to gain exposure to targeted emerging market all cap equity of high dividend yielding companies.",where:"",holdings:["CICHF (4.70%)","BVMF:VALE3 (3.46%)","TPE:2454 (3.11%)","IDCBF (2.37%)"]},
+  {id:12,name:"JP Morgan Covered Call",ticker:"JEPI",cls:"Stocks",what:"JPMorgan Equity Premium Income ETF seeks to deliver monthly distributable income and equity market exposure with less volatility.",why:"Monthly income generation with reduced equity volatility.",where:"",holdings:["NVDA (1.68%)","ORCL (1.63%)","META (1.62%)","TT (1.59%)","AMZN (1.59%)"]},
+  {id:13,name:"BlackRock REIT",ticker:"BIREX",cls:"Stocks",what:"Actively managed mutual fund that primarily invests in equity securities of companies engaged in the U.S. real estate sector.",why:"Broad exposure to U.S. and international real-estate stocks. Invests at least 80% in U.S. real estate equities and up to 20% internationally. Provides good inflation protection.",where:"",holdings:["PLD (7.62%)","AMT (6.41%)","WELL (5.87%)","AVB (5.30%)","EQIX (5.30%)"]},
+  {id:14,name:"Lazard Global Listed Infrastructure",ticker:"GLIFX",cls:"Stocks",what:"Seeks total return by investing in a select universe of preferred infrastructure companies with potential to achieve lower volatility returns exceeding inflation.",why:"Diversification opportunity through preferred infrastructure companies. Powerful complement to real assets, private equity infrastructure, and global equity allocations.",where:"",holdings:["LON: NG (7.97%)","BME: FER (7.74%)","BIT: SRG (7.13%)","EPA: DG (4.87%)"]},
+  {id:15,name:"Guggenheim Total Return",ticker:"GIBIX",cls:"Bonds",what:"Actively managed fixed-income fund seeking attractive total returns by prudently managing credit and duration risk through a multi-sector approach driven by relative value.",why:"Invests broadly across U.S. investment-grade bonds, MBS, ABS, and opportunistic allocations to high-yield and emerging-market debt through a core-plus approach.",where:"",holdings:["Uniform MBS 30Y (5.50%)","Uniform MBS 30Y (3.98%)","Uniform MBS 15Y (1.96%)"]},
+  {id:16,name:"Loomis Bond",ticker:"LSIIX",cls:"Bonds",what:"Loomis Sayles Investment Grade Bond Fund seeks high total investment return through a combination of current income and capital appreciation.",why:"Provides exposure to high-quality, investment-grade corporate bonds and other fixed-income securities, including Canadian issuers and high-yield securities.",where:"",holdings:["US Long Bond Sep25 (13%)","2Y Treasury Future Sept25 (6.86%)","10Y Treasury Future Sept25 (6.18%)"]},
+  {id:17,name:"Diamond Hill Core Bond",ticker:"DHRIX",cls:"Bonds",what:"Fixed-income fund emphasizing undervalued securities and securitized products to achieve higher credit quality and yield using an active, value-driven approach.",why:"Provides exposure to investment-grade fixed income securities, particularly mortgage-related and mortgage-backed securities.",where:"",holdings:["GVMXX (3.85%)","T.3 02.15.48 (3.32%)","T.4 02.15.34 (2.51%)"]},
+  {id:18,name:"Simplify Aggregate Bond",ticker:"AGGH",cls:"Bonds",what:"Actively managed to create core bond exposure with enhanced yield via structural income opportunities such as option writing and curve positioning.",why:"Option for investors seeking higher yields than investment grade bonds normally provide, with higher total return potential.",where:"",holdings:["AGG (94.72%)"]},
+  {id:19,name:"JP Morgan Income",ticker:"JMSIX",cls:"Bonds",what:"Flexible, well-diversified fixed income approach seeking to deliver attractive, reliable income through genuine diversification to reduce portfolio volatility.",why:"Flexible, income-driven multi-sector bond solution. Strategic addition for income-oriented investors or those seeking enhanced yield with active management.",where:"",holdings:[]},
+  {id:20,name:"Schwab Short Duration Treasury",ticker:"SCHO",cls:"Bonds",what:"Tracks the performance of the short-term U.S. Treasury bond market with remaining maturities of between 1 and 3 years.",why:"Straightforward, low-cost fund offering potential tax-efficiency through simple access to short-term US Treasury securities. Provides income from the short-end of the Treasury bond curve.",where:"",holdings:["T.1.5 01.31.27 (1.61%)","T4.25 12.31.26 (1.52%)"]},
+  {id:21,name:"Goldman Sachs Dynamic Muni",ticker:"GSMTX",cls:"Bonds",what:"Goldman Sachs Dynamic Municipal Income Fund seeks a high level of current income exempt from regular federal income tax.",why:"Attractive tax-free income relative to both municipal bonds and comparable-term taxable bonds. Especially appealing to those in higher tax brackets.",where:"",holdings:["PR.PRCGEN 4.33 07.01.2040 (1.36%)","AZ.AZSMED 01.01.2037 (0.57%)"]},
+  {id:22,name:"Franklin Colorado",ticker:"DCOIX",cls:"Bonds",what:"Invests at least 80% of net assets in municipal securities whose income is exempt from federal income tax and Colorado state personal income taxes.",why:"Predominantly Colorado municipal bonds delivering income exempt from both federal and Colorado state personal income taxes, maximizing after-tax yield for Colorado residents.",where:"",holdings:["PR.PRCDEV 7.5 08.20.2040 (2.67%)","CO.DENSCD 5 12.01.2045 (2.16%)"]},
+  {id:23,name:"Goldman Sachs Ultrashort",ticker:"GPPIX",cls:"Bonds",what:"Goldman Sachs Short-Term Conservative Income Fund seeks to generate current income while maintaining an emphasis on preservation of capital and liquidity.",why:"Provides potential for enhanced return vs money market funds. The ultra-short duration seeks potentially higher returns while maintaining emphasis on capital preservation and liquidity.",where:"",holdings:["Manufacturers & Traders Trust 4.65% (1.44%)","US Treasury Notes 4.25% (1.38%)"]},
+  {id:24,name:"JP Morgan Ultrashort",ticker:"JPST",cls:"Bonds",what:"Invests primarily in a diversified portfolio of short-term, investment grade fixed and floating-rate corporate and structured debt. Targets portfolio duration of less than one year.",why:"Current income with a focus on risk management. Competitively priced at 0.18%. Has been in top quartile returns with top decile risk-adjusted returns since inception.",where:"",holdings:["JPMORGAN US GOVT MMKT (4.50%)","DZ BANK NY (0.89%)"]},
+  {id:25,name:"MFS Emerging Market Debt",ticker:"MEDIX",cls:"Bonds",what:"Provides broad emerging market debt exposure, combining attractive yield potential with portfolio diversification away from US-centric fixed income.",why:"Enhances a portfolio by providing higher-yielding emerging markets debt exposure, adding global diversification and income potential beyond traditional bonds.",where:"",holdings:["USD Cash (4.49%)","US Treasury Notes 2.75% (4.45%)"]},
+  {id:26,name:"GlobalX MLP & Energy Infrastructure",ticker:"MLPX",cls:"Bonds",what:"Tax-efficient vehicle for gaining access to MLPs and similar entities, such as General Partners of MLPs and energy infrastructure corporations.",why:"Tax-efficient way to gain exposure to midstream infrastructure entities such as pipelines and storage facilities with less sensitivity to energy prices.",where:"",holdings:["ENB (8.96%)","WMB (8.94%)","KMI (8.90%)","OKE (7.70%)"]},
+  {id:27,name:"Prudential High Yield Z",ticker:"PHYZX",cls:"Bonds",what:"PGIM High Yield Fund seeks to maximize current income by investing primarily in high-yield bonds rated Ba or lower by Moody's or BB or lower by S&P.",why:"Good way to gain exposure to high yield bonds that may provide higher current income as well as potential capital appreciation.",where:"",holdings:["T.3.875 11.30.27 (1.54%)","MEDIND.3.875 04.01.29 (0.89%)"]},
+  {id:28,name:"Invesco Taxable Muni",ticker:"BAB",cls:"Bonds",what:"Based on the ICE BofAML US Taxable Municipal Securities Plus Index, tracking the performance of US dollar-denominated taxable municipal debt.",why:"Adds high-quality taxable municipal bond exposure providing attractive yield, intermediate duration, and diversification between Treasuries and corporate bonds.",where:"",holdings:["CA.CAS 7.55 04.01.2039 (1.41%)","ILLINOIS ST 6.9% (1.10%)"]},
+  {id:29,name:"Janus Henderson AAA CLO ETF",ticker:"JAAA",cls:"Bonds",what:"Invests in high-quality CLOs seeking to deliver risk-managed access to an asset class that may provide consistent risk-adjusted returns with low correlation to traditional fixed income.",why:"Provides exposure to the high-quality, floating rate CLO market in a liquid, transparent manner.",where:"",holdings:["OCP CLO Ltd 5.48% (1.16%)","Octagon Inv Partners 51 5.32% (1.14%)"]},
+  {id:30,name:"First Trust Preferred Stock",ticker:"FPE",cls:"Bonds",what:"Actively managed fund seeking total return and current income by investing at least 80% in preferred securities and income-producing debt securities.",why:"Adds income-oriented exposure through hybrid securities that offer higher yields than traditional bonds.",where:"",holdings:["BANK OF AMERICA CORP Variable (2.78%)","Wells Fargo Series L 7.500% (2.20%)"]},
+  {id:31,name:"AQR Multi Strat",ticker:"QDSIX",cls:"Alternatives",what:"AQR Diversifying Strategies Fund seeks capital appreciation by allocating to six AQR alternative mutual funds with tactical positioning. Combines multiple alternative strategies into a single core allocation.",why:"Good diversifying source seeking results with reduced correlation to stocks and bond market movements. Helpful for risk reduction or return enhancement.",where:"",holdings:["AQRRZ (29.95%)","QMNRX (19.34%)","QSPRX (13.31%)"]},
+  {id:32,name:"BlackRock Commodities",ticker:"BICSX",cls:"Alternatives",what:"Invests in two strategies approximately equally: commodity-linked derivatives and equity investments in commodity-related companies including mining, energy, and agricultural companies.",why:"Good way to add complete exposure to commodities across the entire commodities value chain through equities and futures.",where:"",holdings:["TSX: NTR (4.43%)","CTVA (3.48%)","XOM (2.45%)"]},
+  {id:33,name:"Versus Real Estate",ticker:"VCMIX",cls:"Alternatives",what:"Harrison Street Estate Fund LLC — a non-diversified continuously offered closed-end interval fund designed as a core real estate holding across the broad capital structure of the asset class.",why:"Provides exposure to the real estate market including private equity and debt and public equity and debt.",where:"",holdings:["CBRE US Logistics Partners (11.64%)","CLARION LION PROPERTIES FUND (8.62%)"]},
+  {id:34,name:"Versus Real Assets",ticker:"VCRRX",cls:"Alternatives",what:"Harrison Street Real Assets Fund LLC — a non-diversified continuously offered closed-end interval fund seeking long-term real returns through current income and capital appreciation.",why:"Core real assets holding providing exposure to private infrastructure, farmlands, timberland and public real assets.",where:"",holdings:["Harrison Street Social Infrastructure Fund (10.98%)","BTG Pactual US Timberland (10.91%)"]},
+  {id:35,name:"Cliffwater Private Credit",ticker:"CCLFX",cls:"Alternatives",what:"Cliffwater Corporate Lending Fund — one of the largest allocators to private debt, delivering unique access to direct lending with a multi-lender model.",why:"Provides exposure to middle market loans which have produced high income with limited downside risk during periods of volatility.",where:"",holdings:["GVMXX (5.14%)","SILVERPF (4.59%)","BARINGPC (3.32%)"]},
+  {id:36,name:"Simplify Managed Futures",ticker:"CTA",cls:"Alternatives",what:"Seeks long-term capital appreciation by systematically investing in futures to create an absolute return profile with low correlation to equities.",why:"Provides U.S. and Canadian commodity exposure as well as rates exposure, while also providing low correlation to equities.",where:"",holdings:["TREASURY BILL DN 7/25 (27.87%)","CORU5 COM (26.42%)","CORZ5 COM (20.15%)"]}
+];
+
+let positions = [];
+let editId = null;
+let nextId = 100;
+
+function loadPositions() {
+  try {
+    const stored = localStorage.getItem(POSITIONS_KEY);
+    if (stored) {
+      positions = JSON.parse(stored);
+      nextId = Math.max(...positions.map(p => p.id || 0), 99) + 1;
+    } else {
+      positions = SEED.map(p => ({...p}));
+      savePositions();
+    }
+  } catch(e) {
+    positions = SEED.map(p => ({...p}));
+  }
+}
+
+function savePositions() {
+  try { localStorage.setItem(POSITIONS_KEY, JSON.stringify(positions)); } catch(e) {}
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function badgeCls(cls) {
+  if (cls === 'Stocks') return 'badge-stock';
+  if (cls === 'Bonds') return 'badge-bond';
+  return 'badge-alt';
+}
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const f = document.getElementById('filter').value;
+
+  const filtered = positions.filter(p => {
+    const matchCls = f === 'all' || p.cls === f;
+    const search = [p.name, p.ticker, p.what, p.why, p.where, ...(p.holdings||[])].join(' ').toLowerCase();
+    const matchQ = !q || search.includes(q);
+    return matchCls && matchQ;
+  });
+
+  const stocks = positions.filter(p => p.cls === 'Stocks').length;
+  const bonds = positions.filter(p => p.cls === 'Bonds').length;
+  const alts = positions.filter(p => p.cls === 'Alternatives').length;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-label">Total positions</div><div class="stat-val">${positions.length}</div></div>
+    <div class="stat"><div class="stat-label">Stocks</div><div class="stat-val blue">${stocks}</div></div>
+    <div class="stat"><div class="stat-label">Bonds</div><div class="stat-val green">${bonds}</div></div>
+    <div class="stat"><div class="stat-label">Alternatives</div><div class="stat-val amber">${alts}</div></div>
+  `;
+
+  const container = document.getElementById('cards');
+
+  if (!filtered.length) {
+    container.innerHTML = '<div class="empty">No positions match your search.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(p => `
+    <div class="card" id="card-${p.id}">
+      <div class="card-header" onclick="toggle(${p.id})">
+        <span class="badge ${badgeCls(p.cls)}">${p.cls}</span>
+        <span class="ticker">${p.ticker}</span>
+        <span class="card-name">${p.name}</span>
+        <svg class="chevron" id="chev-${p.id}" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="card-body" id="body-${p.id}">
+        <div class="card-grid">
+          ${p.what ? `<div class="card-section card-full"><div class="card-section-label">What it is</div><div class="card-section-text">${p.what}</div></div>` : ''}
+          ${p.why ? `<div class="card-section card-full"><div class="card-section-label">Why we own it</div><div class="card-section-text">${p.why}</div></div>` : ''}
+          ${p.where ? `<div class="card-section card-full"><div class="card-section-label">Where we own it</div><div class="card-section-text">${p.where}</div></div>` : ''}
+          ${p.holdings && p.holdings.length ? `
+            <div class="card-section card-full">
+              <div class="card-section-label">Largest holdings</div>
+              <div class="holdings">${p.holdings.map(h => `<span class="holding">${h}</span>`).join('')}</div>
+            </div>` : ''}
+        </div>
+        <div class="card-actions">
+          <button class="btn-ghost" onclick="openModal(${p.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit
+          </button>
+          <button class="btn-danger" onclick="deletePos(${p.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggle(id) {
+  const body = document.getElementById('body-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const open = body.classList.toggle('open');
+  if (open) chev.classList.add('open');
+  else chev.classList.remove('open');
+}
+
+function openModal(id) {
+  editId = (id !== undefined) ? id : null;
+  const p = editId !== null ? positions.find(x => x.id === editId) : {};
+  document.getElementById('modal-title').textContent = editId !== null ? 'Edit position' : 'Add new position';
+  document.getElementById('f-name').value = p && p.name ? p.name : '';
+  document.getElementById('f-ticker').value = p && p.ticker ? p.ticker : '';
+  document.getElementById('f-class').value = p && p.cls ? p.cls : 'Stocks';
+  document.getElementById('f-what').value = p && p.what ? p.what : '';
+  document.getElementById('f-why').value = p && p.why ? p.why : '';
+  document.getElementById('f-where').value = p && p.where ? p.where : '';
+  document.getElementById('f-holdings').value = p && p.holdings ? p.holdings.join(', ') : '';
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('f-name').focus(), 50);
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  editId = null;
+}
+
+function savePosition() {
+  const name = document.getElementById('f-name').value.trim();
+  const ticker = document.getElementById('f-ticker').value.trim().toUpperCase();
+  if (!name) { alert('Position name is required.'); return; }
+  if (!ticker) { alert('Ticker is required.'); return; }
+
+  const p = {
+    id: editId !== null ? editId : nextId++,
+    name,
+    ticker,
+    cls: document.getElementById('f-class').value,
+    what: document.getElementById('f-what').value.trim(),
+    why: document.getElementById('f-why').value.trim(),
+    where: document.getElementById('f-where').value.trim(),
+    holdings: document.getElementById('f-holdings').value.split(',').map(s => s.trim()).filter(Boolean)
+  };
+
+  if (editId !== null) {
+    const idx = positions.findIndex(x => x.id === editId);
+    if (idx > -1) positions[idx] = p;
+  } else {
+    positions.push(p);
+  }
+
+  savePositions();
+  closeModal();
+  render();
+  showToast(editId !== null ? 'Position updated.' : 'Position added.');
+}
+
+function deletePos(id) {
+  const p = positions.find(x => x.id === id);
+  if (!p) return;
+  if (!confirm('Delete ' + p.name + '?')) return;
+  positions = positions.filter(x => x.id !== id);
+  savePositions();
+  render();
+  showToast('Position deleted.');
+}
+
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.getElementById('search').addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { this.value = ''; render(); }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+loadPositions();
+render();
+</script>
+</body>
+</html>
