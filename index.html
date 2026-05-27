@@ -35,65 +35,35 @@
   --shadow-md:0 6px 20px rgba(0,0,0,0.4),0 2px 8px rgba(0,0,0,0.25);
   --shadow-lg:0 16px 48px rgba(0,0,0,0.5),0 6px 16px rgba(0,0,0,0.3);
 }
-
 body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--text-primary);font-size:15px;line-height:1.6;min-height:100vh;}
-
-/* HEADER */
-header{
-  background:var(--black);
-  padding:0 2.5rem;
-  height:64px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:100;
-  border-bottom:1px solid var(--border-gold);
-}
+header{background:var(--black);padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-gold);}
 .logo{display:flex;align-items:center;gap:14px}
 .logo-icon{width:34px;height:34px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-icon svg{width:16px;height:16px;fill:var(--black)}
 .logo-wordmark{font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:var(--white);letter-spacing:0.01em}
 .logo-wordmark span{color:var(--gold-light)}
 .header-tag{font-size:11px;font-weight:400;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase}
-
-/* HERO */
 .hero{background:var(--black);padding:2.5rem 2.5rem 2rem;border-bottom:1px solid var(--border-gold)}
 .hero-inner{max-width:980px;margin:0 auto}
 .hero h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:500;color:var(--white);margin-bottom:6px;letter-spacing:-0.01em}
 .hero h1 span{color:var(--gold-light)}
 .hero p{font-size:14px;color:var(--text-secondary);max-width:520px}
-
-/* STATS */
 .stats-row{background:var(--black);padding:0 2.5rem 2rem}
-.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stats-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .stat{background:var(--gray-dark);border:1px solid var(--border-dark);border-radius:var(--radius-sm);padding:1rem 1.1rem}
 .stat-label{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
 .stat-val{font-size:22px;font-weight:500;color:var(--white);letter-spacing:-0.02em}
 .stat-val.gold{color:var(--gold-light)}
-
-/* MAIN */
 main{max-width:980px;margin:0 auto;padding:2rem 2.5rem}
-
-/* TOOLBAR */
 .toolbar{display:flex;gap:10px;margin-bottom:1.75rem;flex-wrap:wrap;align-items:center}
 .search-wrap{flex:1;min-width:220px;position:relative}
 .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--text-muted);pointer-events:none}
-input[type=text],select,textarea{
-  font-family:'DM Sans',sans-serif;font-size:14px;
-  background:var(--gray-dark);
-  border:1px solid var(--border-mid);
-  border-radius:var(--radius-sm);
-  padding:0.6rem 0.9rem;
-  color:var(--text-primary);
-  outline:none;
-  transition:border-color 0.15s,box-shadow 0.15s;
-  width:100%;
-}
+input[type=text],select,textarea{font-family:'DM Sans',sans-serif;font-size:14px;background:var(--gray-dark);border:1px solid var(--border-mid);border-radius:var(--radius-sm);padding:0.6rem 0.9rem;color:var(--text-primary);outline:none;transition:border-color 0.15s,box-shadow 0.15s;width:100%;}
 input[type=text]::placeholder,textarea::placeholder{color:var(--text-muted)}
 input[type=text]:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,146,42,0.1)}
 select option{background:var(--gray-dark);color:var(--text-primary)}
 .search-wrap input{padding-left:2.2rem}
 select{min-width:170px;cursor:pointer}
-
-/* BUTTONS */
 button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border-radius:var(--radius-sm);transition:all 0.15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .btn-gold{background:var(--gold);color:var(--black);border:1px solid var(--gold);padding:0.6rem 1.1rem;font-weight:500}
 .btn-gold:hover{background:var(--gold-light);border-color:var(--gold-light)}
@@ -103,176 +73,77 @@ button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:po
 .btn-link:hover{background:rgba(184,146,42,0.2);color:var(--gold-light)}
 .btn-danger{background:transparent;color:#e05252;border:1px solid transparent;padding:0.45rem 0.75rem}
 .btn-danger:hover{background:rgba(224,82,82,0.1);border-color:rgba(224,82,82,0.25)}
-
-/* FILTER TABS */
-.filter-tabs{display:flex;gap:4px;background:var(--gray-dark);border:1px solid var(--border-mid);border-radius:var(--radius-sm);padding:4px}
-.filter-tab{font-size:12px;font-weight:500;padding:0.35rem 0.9rem;border-radius:5px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
+.filter-tabs{display:flex;gap:4px;background:var(--gray-dark);border:1px solid var(--border-mid);border-radius:var(--radius-sm);padding:4px;flex-wrap:wrap}
+.filter-tab{font-size:12px;font-weight:500;padding:0.35rem 0.8rem;border-radius:5px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
 .filter-tab.active{background:var(--gold);color:var(--black)}
 .filter-tab:not(.active):hover{background:var(--gray-light);color:var(--text-primary)}
-
-/* SECTION HEADERS */
 .section-header{display:flex;align-items:center;gap:12px;margin:2rem 0 1rem}
 .section-label{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:var(--white);letter-spacing:0.01em}
 .section-line{flex:1;height:1px;background:linear-gradient(to right,var(--border-gold),transparent)}
 .section-count{font-size:11px;color:var(--gold-dim);background:var(--gold-pale);border:1px solid var(--gold-border);padding:2px 10px;border-radius:20px}
-
-/* CARD GRID */
 .cards{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:0.5rem}
-
-/* CARDS - dark themed */
-.card{
-  background:var(--gray-card);
-  border:1px solid var(--border-dark);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  transition:border-color 0.2s,box-shadow 0.2s,transform 0.15s;
-}
+.card{background:var(--gray-card);border:1px solid var(--border-dark);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s,transform 0.15s;}
 .card:hover{border-color:var(--border-mid);box-shadow:var(--shadow-md);transform:translateY(-1px)}
 .card.expanded{border-color:var(--border-gold);box-shadow:0 0 0 1px var(--border-gold),var(--shadow-md);transform:none}
-
-.card-header{
-  display:flex;align-items:center;gap:12px;
-  padding:1rem 1.25rem;
-  cursor:pointer;user-select:none;
-}
+.card-header{display:flex;align-items:center;gap:12px;padding:1rem 1.25rem;cursor:pointer;user-select:none;}
 .card-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
-
-/* BADGE */
 .badge{font-size:9px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;flex-shrink:0}
-.badge-stock{background:rgba(59,100,180,0.2);color:#7aa3f5;border:1px solid rgba(59,100,180,0.3)}
+/* ETFs & Indices - blue */
+.badge-etf{background:rgba(59,100,180,0.2);color:#7aa3f5;border:1px solid rgba(59,100,180,0.3)}
+/* Single Stocks - purple */
+.badge-stock{background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.3)}
+/* Bonds - green */
 .badge-bond{background:rgba(34,120,70,0.2);color:#6bcf93;border:1px solid rgba(34,120,70,0.3)}
+/* Alternatives - gold */
 .badge-alt{background:var(--gold-pale);color:var(--gold-light);border:1px solid var(--gold-border)}
-
 .ticker{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);flex-shrink:0;min-width:46px}
 .card-name{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
 .card-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .preview-tag{font-size:12px;color:var(--text-muted);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chevron{width:16px;height:16px;stroke:var(--text-muted);transition:transform 0.2s;flex-shrink:0}
 .chevron.open{transform:rotate(180deg);stroke:var(--gold)}
-
-/* CARD BODY */
 .card-body{display:none;border-top:1px solid var(--border-dark)}
 .card-body.open{display:block}
-
 .card-body-inner{padding:1.25rem 1.25rem 1rem}
-
 .field{margin-bottom:1.1rem}
 .field:last-child{margin-bottom:0}
-
-.field-label{
-  font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--gold-dim);margin-bottom:6px;
-  display:flex;align-items:center;gap:8px;
-}
+.field-label{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
 .field-label::after{content:'';flex:1;height:1px;background:rgba(184,146,42,0.15)}
-
 .field-text{font-size:13.5px;color:var(--text-secondary);line-height:1.75}
 .field-text.bold{color:var(--text-primary)}
-
-/* PLAIN ENGLISH BLOCK */
-.plain-block{
-  background:rgba(184,146,42,0.06);
-  border:1px solid var(--gold-border);
-  border-left:3px solid var(--gold);
-  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
-  padding:1rem 1.1rem;
-}
+.plain-block{background:rgba(184,146,42,0.06);border:1px solid var(--gold-border);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1rem 1.1rem;}
 .plain-block .field-text{color:var(--text-primary);font-size:14px;line-height:1.75}
-
-/* HOLDINGS */
 .holdings{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-.holding{
-  font-family:'DM Mono',monospace;font-size:11px;
-  background:var(--gray-subtle);
-  border:1px solid var(--border-mid);
-  color:var(--text-secondary);
-  padding:3px 9px;border-radius:4px;
-}
-
-/* CARD FOOTER */
-.card-footer{
-  display:flex;gap:6px;
-  padding:0.75rem 1.25rem;
-  background:var(--gray-subtle);
-  border-top:1px solid var(--border-dark);
-  flex-wrap:wrap;
-}
-
-/* DIVIDER LINE in card */
-.card-divider{height:1px;background:var(--border-dark);margin:1rem 0}
-
-/* EMPTY */
+.holding{font-family:'DM Mono',monospace;font-size:11px;background:var(--gray-subtle);border:1px solid var(--border-mid);color:var(--text-secondary);padding:3px 9px;border-radius:4px;}
+.card-footer{display:flex;gap:6px;padding:0.75rem 1.25rem;background:var(--gray-subtle);border-top:1px solid var(--border-dark);flex-wrap:wrap;}
 .empty{text-align:center;padding:3.5rem 2rem;color:var(--text-muted);font-size:14px;background:var(--gray-card);border:1px solid var(--border-dark);border-radius:var(--radius)}
 .empty svg{width:32px;height:32px;stroke:var(--text-muted);margin:0 auto 0.75rem;display:block}
-
-/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
-.modal{
-  background:var(--gray-dark);
-  border:1px solid var(--border-mid);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-lg);
-  width:100%;max-width:580px;
-  max-height:92vh;overflow-y:auto;
-}
-.modal-header{
-  background:var(--black);
-  padding:1.25rem 1.5rem;
-  border-radius:var(--radius) var(--radius) 0 0;
-  border-bottom:1px solid var(--border-gold);
-  display:flex;align-items:center;justify-content:space-between;
-}
+.modal{background:var(--gray-dark);border:1px solid var(--border-mid);border-radius:var(--radius);box-shadow:var(--shadow-lg);width:100%;max-width:580px;max-height:92vh;overflow-y:auto;}
+.modal-header{background:var(--black);padding:1.25rem 1.5rem;border-radius:var(--radius) var(--radius) 0 0;border-bottom:1px solid var(--border-gold);display:flex;align-items:center;justify-content:space-between;}
 .modal-header h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:var(--white)}
 .modal-close{background:transparent;border:none;padding:4px;color:var(--text-muted);cursor:pointer;border-radius:4px}
 .modal-close:hover{color:var(--white);background:var(--gray-light)}
 .modal-close svg{width:18px;height:18px;stroke:currentColor;display:block}
 .modal-body{padding:1.5rem}
 .form-section{margin-bottom:1.25rem}
-.form-section-label{
-  font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--gold-dim);margin-bottom:10px;padding-bottom:6px;
-  border-bottom:1px solid var(--gold-border);
-}
+.form-section-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--gold-border);}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .form-row{margin-bottom:10px}
 .form-row:last-child{margin-bottom:0}
 .form-row label{display:block;font-size:12px;font-weight:500;color:var(--text-secondary);margin-bottom:5px}
 .form-row textarea{height:80px;resize:vertical}
-.modal-footer{
-  padding:1rem 1.5rem;
-  border-top:1px solid var(--border-dark);
-  display:flex;gap:8px;justify-content:flex-end;
-  background:var(--black);
-  border-radius:0 0 var(--radius) var(--radius);
-}
-
-/* TOAST */
-.toast{
-  position:fixed;bottom:1.5rem;right:1.5rem;
-  background:var(--gray-dark);
-  color:var(--text-primary);
-  font-size:13px;font-weight:500;
-  padding:0.7rem 1.1rem;
-  border-radius:var(--radius-sm);
-  box-shadow:var(--shadow-md);
-  z-index:300;opacity:0;transform:translateY(8px);
-  transition:all 0.2s;pointer-events:none;
-  border:1px solid var(--border-mid);
-  border-left:3px solid var(--gold);
-}
+.modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border-dark);display:flex;gap:8px;justify-content:flex-end;background:var(--black);border-radius:0 0 var(--radius) var(--radius);}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--gray-dark);color:var(--text-primary);font-size:13px;font-weight:500;padding:0.7rem 1.1rem;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);z-index:300;opacity:0;transform:translateY(8px);transition:all 0.2s;pointer-events:none;border:1px solid var(--border-mid);border-left:3px solid var(--gold);}
 .toast.show{opacity:1;transform:translateY(0)}
-
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--gray-dark)}
 ::-webkit-scrollbar-thumb{background:var(--gray-light);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--gray-mid)}
-
 @media(max-width:640px){
   header,main,.hero,.stats-row{padding-left:1rem;padding-right:1rem}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stats-inner{grid-template-columns:repeat(3,1fr)}
   .form-grid{grid-template-columns:1fr}
   .preview-tag{display:none}
   .hero h1{font-size:22px}
@@ -310,7 +181,8 @@ button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:po
     </div>
     <div class="filter-tabs">
       <button class="filter-tab active" onclick="setFilter('all',this)">All</button>
-      <button class="filter-tab" onclick="setFilter('Stocks',this)">Stocks</button>
+      <button class="filter-tab" onclick="setFilter('ETFs & Indices',this)">ETFs &amp; Indices</button>
+      <button class="filter-tab" onclick="setFilter('Single Stocks',this)">Single Stocks</button>
       <button class="filter-tab" onclick="setFilter('Bonds',this)">Bonds</button>
       <button class="filter-tab" onclick="setFilter('Alternatives',this)">Alternatives</button>
     </div>
@@ -338,9 +210,14 @@ button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:po
           <div class="form-row"><label>Ticker</label><input type="text" id="f-ticker" placeholder="e.g. IVV"/></div>
         </div>
         <div class="form-row"><label>Asset class</label>
-          <select id="f-class"><option value="Stocks">Stocks</option><option value="Bonds">Bonds</option><option value="Alternatives">Alternatives</option></select>
+          <select id="f-class">
+            <option value="ETFs & Indices">ETFs &amp; Indices</option>
+            <option value="Single Stocks">Single Stocks</option>
+            <option value="Bonds">Bonds</option>
+            <option value="Alternatives">Alternatives</option>
+          </select>
         </div>
-        <div class="form-row"><label>Fund page URL</label><input type="text" id="f-url" placeholder="https://..."/></div>
+        <div class="form-row"><label>Fund / company page URL</label><input type="text" id="f-url" placeholder="https://..."/></div>
       </div>
       <div class="form-section">
         <div class="form-section-label">Description</div>
@@ -351,7 +228,7 @@ button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:po
       <div class="form-section">
         <div class="form-section-label">Details</div>
         <div class="form-row"><label>Where we own it</label><input type="text" id="f-where" placeholder="e.g. Across all Asset Allocation strategies"/></div>
-        <div class="form-row"><label>Largest holdings (comma separated — stocks &amp; alts only)</label><input type="text" id="f-holdings" placeholder="e.g. AAPL (7.34%), MSFT (7.24%)"/></div>
+        <div class="form-row"><label>Largest holdings (comma separated)</label><input type="text" id="f-holdings" placeholder="e.g. AAPL (7.34%), MSFT (7.24%)"/></div>
       </div>
     </div>
     <div class="modal-footer">
@@ -364,83 +241,85 @@ button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:po
 <div class="toast" id="toast"></div>
 
 <script>
-const KEY='aws_glossary_v4';
+const KEY='aws_glossary_v5';
 let activeFilter='all';
 let positions=[];
 let editId=null;
 let nextId=100;
 
+const ASSET_CLASSES=['ETFs & Indices','Single Stocks','Bonds','Alternatives'];
+
 const SEED=[
-  {id:1,name:"iShares S&P 500",ticker:"IVV",cls:"Stocks",url:"https://www.ishares.com/us/products/239726/",
+  {id:1,name:"iShares S&P 500",ticker:"IVV",cls:"ETFs & Indices",url:"https://www.ishares.com/us/products/239726/",
     what:"S&P 500 index fund tracking the 500 largest U.S. public companies.",
     plain:"Owning IVV is like owning a tiny slice of the 500 biggest companies in America — Apple, Microsoft, Amazon, NVIDIA, and so on — all in one fund. When the U.S. stock market goes up, IVV goes up. It's the simplest and cheapest way to capture broad U.S. equity returns.",
     why:"Cheap beta (market exposure). We want the return profile from large U.S. companies and this is a very efficient way to get that exposure.",
     where:"Across all Asset Allocation strategies and Tactical Equity.",
     holdings:["AAPL (7.34%)","MSFT (7.24%)","AMZN (3.47%)","NVDA (3.21%)","GOOGL (2.12%)"]},
-  {id:2,name:"VanEck Vectors M* Wide Moat",ticker:"MOAT",cls:"Stocks",url:"https://www.vaneck.com/us/en/investments/morningstar-wide-moat-etf-moat/",
+  {id:2,name:"VanEck Vectors M* Wide Moat",ticker:"MOAT",cls:"ETFs & Indices",url:"https://www.vaneck.com/us/en/investments/morningstar-wide-moat-etf-moat/",
     what:"US Large Cap ETF. Morningstar selects companies they believe have a sustainable competitive advantage, trading below their estimated fair value.",
     plain:"Morningstar's analysts identify companies with durable competitive advantages — think brand strength, switching costs, or network effects — that will last at least 20 years. From that list, they only buy the ones currently trading at a discount to what they think they're worth. It's a disciplined value-meets-quality screen applied to large U.S. companies.",
     why:"This active, factor-based screen has a proven track record of competing with the S&P 500. A fairly priced complement to our cheap core IVV position.",
     where:"Across all Asset Allocation strategies and inside Tactical Equity.",
     holdings:["DIS (2.84%)","USB (2.81%)","MAS (2.73%)","GOOGL (2.73%)","WFC (2.68%)"]},
-  {id:3,name:"Schwab Large Cap Growth",ticker:"SCHG",cls:"Stocks",url:"https://www.schwabassetmanagement.com/products/schg",
+  {id:3,name:"Schwab Large Cap Growth",ticker:"SCHG",cls:"ETFs & Indices",url:"https://www.schwabassetmanagement.com/products/schg",
     what:"Passive Large Cap ETF tracking the Dow Jones U.S. Large-Cap Growth Total Stock Market Index.",
     plain:"A low-cost fund that owns the fastest-growing large U.S. companies — think high-revenue-growth tech names like Apple, Microsoft, and NVIDIA. It tilts heavily toward technology and tends to outperform in bull markets but can fall harder in downturns.",
     why:"Complement to IVV and MOAT. Allows toggling toward growth when valuations and macro conditions favor it.",
     where:"Across all Asset Allocation strategies and inside Tactical Equity.",
     holdings:["AAPL (13.04%)","MSFT (12.85%)","NVDA (5.69%)","GOOGL (3.75%)","META (3.49%)"]},
-  {id:4,name:"Vanguard Value",ticker:"VTV",cls:"Stocks",url:"https://investor.vanguard.com/etf/profile/VTV",
+  {id:4,name:"Vanguard Value",ticker:"VTV",cls:"ETFs & Indices",url:"https://investor.vanguard.com/etf/profile/VTV",
     what:"Passive Large Cap ETF tracking the CRSP US Large Cap Value Index.",
     plain:"Owns large U.S. companies that look cheap relative to their earnings, book value, or dividends — financials, healthcare, energy, and consumer staples dominate. It's the counterweight to growth; tends to outperform when interest rates rise or when the market rotates away from expensive tech.",
     why:"Complement to IVV and MOAT. Allows toggling toward value when valuations and macro conditions favor it.",
     where:"Across all Asset Allocation strategies and inside Tactical Equity.",
     holdings:["BRKB (3.82%)","UNH (3.04%)","XOM (2.60%)","JPM (2.48%)","JNJ (2.19%)"]},
-  {id:5,name:"Invesco High Quality Mid Cap",ticker:"XMHQ",cls:"Stocks",url:"https://www.invesco.com/us/financial-products/etfs/product-detail?audienceType=Investor&ticker=XMHQ",
+  {id:5,name:"Invesco High Quality Mid Cap",ticker:"XMHQ",cls:"ETFs & Indices",url:"https://www.invesco.com/us/financial-products/etfs/product-detail?audienceType=Investor&ticker=XMHQ",
     what:"MidCap Quality ETF tracking the S&P MidCap 400 Quality Index.",
     plain:"Focuses on mid-sized U.S. companies that score well on quality metrics like return on equity, earnings stability, and balance sheet strength. Mid-caps tend to offer more growth potential than large-caps with less volatility than small-caps — the quality screen adds another layer of discipline.",
     why:"High quality midcap exposure with a quality factor screen.",where:"",
     holdings:["CSL (4.95%)","EME (4.83%)","FIX (3.16%)","MANH (2.82%)","SFM (2.44%)"]},
-  {id:6,name:"Fidelity Mid Cap Select",ticker:"FMDE",cls:"Stocks",url:"https://www.fidelity.com/etfs/fmde",
+  {id:6,name:"Fidelity Mid Cap Select",ticker:"FMDE",cls:"ETFs & Indices",url:"https://www.fidelity.com/etfs/fmde",
     what:"Actively Managed Mid-Cap ETF investing at least 80% in stocks from the Russell Midcap Index.",
     plain:"A human-managed mid-cap fund where Fidelity's analysts pick individual stocks they believe will outperform. Unlike XMHQ's rules-based screen, this relies on fundamental research — the manager has discretion to overweight or underweight companies based on conviction.",
     why:"Active mid-cap management with broad Russell Midcap exposure.",where:"",
     holdings:["HWM (1.18%)","AXON (1.04%)","BK (1.03%)","RBLX (1.02%)","LNG (0.95%)"]},
-  {id:7,name:"iShares Core EAFE",ticker:"IEFA",cls:"Stocks",url:"https://www.ishares.com/us/products/239626/",
+  {id:7,name:"iShares Core EAFE",ticker:"IEFA",cls:"ETFs & Indices",url:"https://www.ishares.com/us/products/239626/",
     what:"Tracks the MSCI EAFE IMI Index — large, mid, and small cap developed market equities excluding the U.S. and Canada.",
     plain:"Owning IEFA is like owning a slice of the stock markets of Europe, Japan, Australia, and similar developed economies. It gives exposure to companies like SAP, ASML, Nestlé, and HSBC. It diversifies away from U.S. dollar risk while staying in stable, developed markets.",
     why:"Low cost exposure to a broad range of companies in Europe, Australia, Asia, and the Far East. Good way to diversify internationally.",
     where:"",holdings:["SAP (1.46%)","ASML (1.30%)","NESN (1.15%)","ROG (1.02%)","HSBA (1.02%)"]},
-  {id:8,name:"iShares Small Cap Factor",ticker:"SMLF",cls:"Stocks",url:"https://www.ishares.com/us/products/272820/",
+  {id:8,name:"iShares Small Cap Factor",ticker:"SMLF",cls:"ETFs & Indices",url:"https://www.ishares.com/us/products/272820/",
     what:"Tracks the STOXX U.S. Small Cap Equity Factor Index, selecting small-cap stocks based on five factors.",
     plain:"Rather than just buying all small U.S. companies, this fund screens them for five characteristics historically associated with outperformance: value (cheap price), quality (strong financials), momentum (recent price strength), low size, and low volatility. It's a smarter way to own small-caps.",
     why:"Efficient access to U.S. small-cap stocks based on five factors: value, quality, momentum, low size, and low volatility.",
     where:"",holdings:["EME (1.08%)","CVNA (0.87%)","JBL (0.83%)","IBKR (0.70%)","NTNX (0.62%)"]},
-  {id:9,name:"GS GQG Partners Intl Opps",ticker:"GSIMX",cls:"Stocks",url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-opportunities-fund.html",
+  {id:9,name:"GS GQG Partners Intl Opps",ticker:"GSIMX",cls:"ETFs & Indices",url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-opportunities-fund.html",
     what:"Tracks the MSCI ACWI ex USA Index using a bottom-up, growth-at-reasonable-price approach across developed and emerging markets.",
     plain:"GQG's managers travel the world looking for companies with durable competitive advantages — strong brands, dominant market positions, pricing power — trading at reasonable prices. Unlike a passive fund, they can go anywhere outside the U.S. and hold concentrated positions in their best ideas.",
     why:"Offers international portfolio diversification by seeking enduring and compelling ideas across developed and emerging market opportunities.",
     where:"",holdings:["PM (7.36%)","TSX: ENB (3.35%)","LON:BATS (3.22%)","CB (2.92%)","LON:AZN (2.87%)"]},
-  {id:10,name:"GS GQG Partners Intl Equity Income",ticker:"GSIKX",cls:"Stocks",url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-equity-income-fund.html",
+  {id:10,name:"GS GQG Partners Intl Equity Income",ticker:"GSIKX",cls:"ETFs & Indices",url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-equity-income-fund.html",
     what:"Tracks the MSCI EAFE benchmark, building the portfolio one company at a time looking for stocks trading at a discount with potential for strong returns.",
     plain:"Similar to GSIMX but with a stronger income focus — GQG targets international companies that pay meaningful dividends and look undervalued. The defensive tilt means it tends to hold up better than pure growth international funds when markets get rocky.",
     why:"Defensively-tilted international equity allocation balancing dividend income with steady capital appreciation.",
     where:"",holdings:["LON: SHEL (5.06%)","LON: HSBA (4.12%)","CCEP (3.93%)","TYO: 8316 (3.63%)"]},
-  {id:11,name:"WisdomTree EM High Dividend",ticker:"DEM",cls:"Stocks",url:"https://www.wisdomtree.com/investments/etfs/equity/dem",
+  {id:11,name:"WisdomTree EM High Dividend",ticker:"DEM",cls:"ETFs & Indices",url:"https://www.wisdomtree.com/investments/etfs/equity/dem",
     what:"Seeks to track the investment results of high-dividend-yielding companies in the emerging markets region.",
     plain:"Owns dividend-paying companies in places like China, Brazil, Taiwan, and India. Emerging markets can offer higher growth than developed markets, and the high-dividend screen filters toward more profitable, cash-generating companies rather than speculative growth names.",
     why:"Targeted exposure to emerging market all cap equity of high dividend yielding companies.",
     where:"",holdings:["CICHF (4.70%)","BVMF:VALE3 (3.46%)","TPE:2454 (3.11%)","IDCBF (2.37%)"]},
-  {id:12,name:"JP Morgan Covered Call",ticker:"JEPI",cls:"Stocks",url:"https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-46641q332",
+  {id:12,name:"JP Morgan Covered Call",ticker:"JEPI",cls:"ETFs & Indices",url:"https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-46641q332",
     what:"JPMorgan Equity Premium Income ETF. Owns S&P 500 stocks and sells call options against the portfolio to generate monthly income.",
     plain:"JEPI owns a diversified basket of large U.S. stocks and sells 'covered call' options on those positions each month. Selling options generates a cash premium — that's where the high monthly income comes from. The tradeoff: when the market surges, JEPI lags, because it's given away some of the upside in exchange for the premium income.",
     why:"Monthly income generation with equity exposure and reduced volatility relative to a straight S&P 500 fund.",
     where:"",holdings:["NVDA (1.68%)","ORCL (1.63%)","META (1.62%)","TT (1.59%)","AMZN (1.59%)"]},
-  {id:13,name:"BlackRock REIT",ticker:"BIREX",cls:"Stocks",url:"https://www.blackrock.com/us/individual/products/239578/",
+  {id:13,name:"BlackRock REIT",ticker:"BIREX",cls:"ETFs & Indices",url:"https://www.blackrock.com/us/individual/products/239578/",
     what:"Actively managed mutual fund investing primarily in equity securities of U.S. real estate companies.",
     plain:"Owns publicly traded REITs — companies that own warehouses, cell towers, apartments, hospitals, and data centers. REITs are required by law to distribute at least 90% of their income as dividends, making them strong income producers. BlackRock's managers actively pick which REITs they believe offer the best risk-adjusted returns.",
     why:"Broad exposure to U.S. and international real-estate stocks. Provides good inflation protection since rents tend to rise with inflation.",
     where:"",holdings:["PLD (7.62%)","AMT (6.41%)","WELL (5.87%)","AVB (5.30%)","EQIX (5.30%)"]},
-  {id:14,name:"Lazard Global Listed Infrastructure",ticker:"GLIFX",cls:"Stocks",url:"https://www.lazardassetmanagement.com/us/individual/funds/lazard-global-listed-infrastructure-portfolio/",
+  {id:14,name:"Lazard Global Listed Infrastructure",ticker:"GLIFX",cls:"ETFs & Indices",url:"https://www.lazardassetmanagement.com/us/individual/funds/lazard-global-listed-infrastructure-portfolio/",
     what:"Seeks total return by investing in a select universe of preferred infrastructure companies — utilities, toll roads, airports, pipelines — globally.",
     plain:"Infrastructure companies own assets people can't live without — electricity grids, water systems, toll roads, airports, and gas pipelines. These businesses typically have long-term contracts or regulated revenues that grow with inflation, making them low-volatility, income-generating investments that behave differently from the broader stock market.",
     why:"Diversification through preferred infrastructure companies. Powerful complement to real assets and global equity allocations.",
@@ -560,8 +439,16 @@ const SEED=[
 function load(){
   try{
     const s=localStorage.getItem(KEY);
-    if(s){positions=JSON.parse(s);nextId=Math.max(...positions.map(p=>p.id||0),99)+1;}
-    else{positions=SEED.map(p=>({...p}));save();}
+    if(s){
+      positions=JSON.parse(s);
+      // migrate old "Stocks" cls to "ETFs & Indices"
+      let changed=false;
+      positions.forEach(p=>{if(p.cls==='Stocks'){p.cls='ETFs & Indices';changed=true;}});
+      if(changed)save();
+      nextId=Math.max(...positions.map(p=>p.id||0),99)+1;
+    }else{
+      positions=SEED.map(p=>({...p}));save();
+    }
   }catch(e){positions=SEED.map(p=>({...p}));}
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(positions));}catch(e){}}
@@ -579,8 +466,23 @@ function setFilter(f,el){
   render();
 }
 
-function badgeCls(c){return c==='Stocks'?'badge-stock':c==='Bonds'?'badge-bond':'badge-alt';}
-function showHoldings(p){return(p.cls==='Stocks'||p.cls==='Alternatives')&&p.holdings&&p.holdings.length;}
+function badgeCls(c){
+  if(c==='ETFs & Indices')return'badge-etf';
+  if(c==='Single Stocks')return'badge-stock';
+  if(c==='Bonds')return'badge-bond';
+  return'badge-alt';
+}
+
+function badgeLabel(c){
+  if(c==='ETFs & Indices')return'ETF';
+  if(c==='Single Stocks')return'Stock';
+  if(c==='Bonds')return'Bond';
+  return'Alt';
+}
+
+function showHoldings(p){
+  return(p.cls==='ETFs & Indices'||p.cls==='Single Stocks'||p.cls==='Alternatives')&&p.holdings&&p.holdings.length;
+}
 
 function render(){
   const q=document.getElementById('search').value.toLowerCase().trim();
@@ -590,12 +492,15 @@ function render(){
     return matchCls&&(!q||blob.includes(q));
   });
 
-  const counts={Stocks:positions.filter(p=>p.cls==='Stocks').length,Bonds:positions.filter(p=>p.cls==='Bonds').length,Alternatives:positions.filter(p=>p.cls==='Alternatives').length};
+  const counts={};
+  ASSET_CLASSES.forEach(c=>counts[c]=positions.filter(p=>p.cls===c).length);
+
   document.getElementById('stats').innerHTML=`
     <div class="stat"><div class="stat-label">Total positions</div><div class="stat-val gold">${positions.length}</div></div>
-    <div class="stat"><div class="stat-label">Stocks</div><div class="stat-val">${counts.Stocks}</div></div>
-    <div class="stat"><div class="stat-label">Bonds</div><div class="stat-val">${counts.Bonds}</div></div>
-    <div class="stat"><div class="stat-label">Alternatives</div><div class="stat-val">${counts.Alternatives}</div></div>
+    <div class="stat"><div class="stat-label">ETFs &amp; Indices</div><div class="stat-val">${counts['ETFs & Indices']||0}</div></div>
+    <div class="stat"><div class="stat-label">Single Stocks</div><div class="stat-val">${counts['Single Stocks']||0}</div></div>
+    <div class="stat"><div class="stat-label">Bonds</div><div class="stat-val">${counts['Bonds']||0}</div></div>
+    <div class="stat"><div class="stat-label">Alternatives</div><div class="stat-val">${counts['Alternatives']||0}</div></div>
   `;
 
   const root=document.getElementById('cards-root');
@@ -606,7 +511,7 @@ function render(){
 
   const groups=activeFilter!=='all'
     ?{[activeFilter]:filtered}
-    :['Stocks','Bonds','Alternatives'].reduce((a,cls)=>{
+    :ASSET_CLASSES.reduce((a,cls)=>{
         const g=filtered.filter(p=>p.cls===cls);
         if(g.length)a[cls]=g;
         return a;
@@ -623,7 +528,7 @@ function render(){
         <div class="card" id="card-${p.id}">
           <div class="card-header" onclick="toggle(${p.id})">
             <div class="card-left">
-              <span class="badge ${badgeCls(p.cls)}">${p.cls}</span>
+              <span class="badge ${badgeCls(p.cls)}">${badgeLabel(p.cls)}</span>
               <span class="ticker">${p.ticker}</span>
               <span class="card-name">${p.name}</span>
             </div>
@@ -667,7 +572,7 @@ function openModal(id){
   document.getElementById('modal-title').textContent=editId!==null?'Edit position':'Add new position';
   document.getElementById('f-name').value=p&&p.name?p.name:'';
   document.getElementById('f-ticker').value=p&&p.ticker?p.ticker:'';
-  document.getElementById('f-class').value=p&&p.cls?p.cls:'Stocks';
+  document.getElementById('f-class').value=p&&p.cls?p.cls:'ETFs & Indices';
   document.getElementById('f-url').value=p&&p.url?p.url:'';
   document.getElementById('f-what').value=p&&p.what?p.what:'';
   document.getElementById('f-plain').value=p&&p.plain?p.plain:'';
