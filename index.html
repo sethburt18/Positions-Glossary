@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --bg: #f7f6f2;
     --surface: #ffffff;
@@ -20,408 +19,78 @@
     --text2: #6b6960;
     --text3: #9b9890;
     --accent: #1a1916;
-    --stock-bg: #e8f0fe;
-    --stock-text: #1a3a8f;
-    --bond-bg: #e6f4ea;
-    --bond-text: #1a5c2e;
-    --alt-bg: #fef3e2;
-    --alt-text: #7a4a00;
+    --stock-bg: #e8f0fe; --stock-text: #1a3a8f;
+    --bond-bg: #e6f4ea; --bond-text: #1a5c2e;
+    --alt-bg: #fef3e2; --alt-text: #7a4a00;
     --danger: #c0392b;
-    --radius: 10px;
-    --radius-sm: 6px;
+    --radius: 10px; --radius-sm: 6px;
     --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
   }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    background: var(--accent);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark { width: 32px; height: 32px; background: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .logo-mark svg { width: 16px; height: 16px; fill: #fff; }
-
-  .logo-text {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--text);
-  }
-
-  .logo-sub {
-    font-size: 11px;
-    color: var(--text3);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .header-actions { display: flex; align-items: center; gap: 10px; }
-
+  .logo-text { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+  .logo-sub { font-size: 11px; color: var(--text3); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
   main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 1.5rem;
-  }
-
-  .stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.1rem;
-    box-shadow: var(--shadow);
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  .stat-val {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text);
-  }
-
-  .stat-val.blue { color: #1a3a8f; }
-  .stat-val.green { color: #1a5c2e; }
-  .stat-val.amber { color: #7a4a00; }
-
-  .toolbar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 1.25rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  input[type="text"], select, textarea {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 0.55rem 0.85rem;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.15s;
-    width: 100%;
-  }
-
-  input[type="text"]:focus, select:focus, textarea:focus {
-    border-color: var(--border2);
-    box-shadow: 0 0 0 3px rgba(26,25,22,0.06);
-  }
-
-  .search-wrap {
-    flex: 1;
-    min-width: 200px;
-    position: relative;
-  }
-
-  .search-wrap svg {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
-    stroke: var(--text3);
-    pointer-events: none;
-  }
-
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem; box-shadow: var(--shadow); }
+  .stat-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; margin-bottom: 6px; }
+  .stat-val { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .stat-val.blue { color: #1a3a8f; } .stat-val.green { color: #1a5c2e; } .stat-val.amber { color: #7a4a00; }
+  input[type="text"], select, textarea { font-family: 'DM Sans', sans-serif; font-size: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.55rem 0.85rem; color: var(--text); outline: none; transition: border-color 0.15s; width: 100%; }
+  input[type="text"]:focus, select:focus, textarea:focus { border-color: var(--border2); box-shadow: 0 0 0 3px rgba(26,25,22,0.06); }
+  .toolbar { display: flex; gap: 10px; margin-bottom: 1.25rem; align-items: center; flex-wrap: wrap; }
+  .search-wrap { flex: 1; min-width: 200px; position: relative; }
+  .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; stroke: var(--text3); pointer-events: none; }
   .search-wrap input { padding-left: 2rem; }
-
   select { min-width: 160px; cursor: pointer; }
-
-  button {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: var(--radius-sm);
-    transition: all 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border: 1px solid var(--accent);
-    padding: 0.55rem 1rem;
-  }
-
+  button { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; border-radius: var(--radius-sm); transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); padding: 0.55rem 1rem; }
   .btn-primary:hover { background: #333; border-color: #333; }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text2);
-    border: 1px solid var(--border);
-    padding: 0.45rem 0.75rem;
-  }
-
+  .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); padding: 0.45rem 0.75rem; }
   .btn-ghost:hover { background: var(--surface2); color: var(--text); }
-
-  .btn-danger {
-    background: transparent;
-    color: var(--danger);
-    border: 1px solid transparent;
-    padding: 0.45rem 0.75rem;
-  }
-
+  .btn-link { background: transparent; color: #1a3a8f; border: 1px solid var(--stock-bg); padding: 0.45rem 0.75rem; font-size: 12px; }
+  .btn-link:hover { background: var(--stock-bg); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid transparent; padding: 0.45rem 0.75rem; }
   .btn-danger:hover { background: #fdf0ee; border-color: #f5c6c2; }
-
   .cards { display: flex; flex-direction: column; gap: 8px; }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: border-color 0.15s; }
   .card:hover { border-color: var(--border2); }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0.9rem 1.1rem;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .badge {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-
+  .card-header { display: flex; align-items: center; gap: 10px; padding: 0.9rem 1.1rem; cursor: pointer; user-select: none; }
+  .badge { font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; flex-shrink: 0; }
   .badge-stock { background: var(--stock-bg); color: var(--stock-text); }
   .badge-bond { background: var(--bond-bg); color: var(--bond-text); }
   .badge-alt { background: var(--alt-bg); color: var(--alt-text); }
-
-  .ticker {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text3);
-    flex-shrink: 0;
-    min-width: 52px;
-  }
-
-  .card-name {
-    font-size: 14px;
-    font-weight: 500;
-    flex: 1;
-    color: var(--text);
-  }
-
-  .chevron {
-    width: 16px;
-    height: 16px;
-    stroke: var(--text3);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-
+  .ticker { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text3); flex-shrink: 0; min-width: 52px; }
+  .card-name { font-size: 14px; font-weight: 500; flex: 1; color: var(--text); }
+  .chevron { width: 16px; height: 16px; stroke: var(--text3); flex-shrink: 0; transition: transform 0.2s; }
   .chevron.open { transform: rotate(180deg); }
-
-  .card-body {
-    display: none;
-    padding: 0 1.1rem 1rem;
-    border-top: 1px solid var(--border);
-    margin-top: 0;
-  }
-
+  .card-body { display: none; padding: 0 1.1rem 1rem; border-top: 1px solid var(--border); }
   .card-body.open { display: block; }
-
-  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.9rem; }
-
-  .card-section-label {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-bottom: 5px;
-  }
-
-  .card-section-text {
-    font-size: 13.5px;
-    color: var(--text2);
-    line-height: 1.65;
-  }
-
-  .card-full { grid-column: 1 / -1; }
-
-  .holdings {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 4px;
-  }
-
-  .holding {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    padding: 3px 8px;
-    border-radius: 4px;
-  }
-
-  .card-actions {
-    display: flex;
-    gap: 6px;
-    margin-top: 0.9rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .empty {
-    text-align: center;
-    padding: 3rem;
-    color: var(--text3);
-    font-size: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-
+  .card-sections { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.9rem; }
+  .card-section-label { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+  .card-section-text { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+  .holdings { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .holding { font-family: 'DM Mono', monospace; font-size: 11px; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); padding: 3px 8px; border-radius: 4px; }
+  .card-actions { display: flex; gap: 6px; margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .empty { text-align: center; padding: 3rem; color: var(--text3); font-size: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--surface);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
-    padding: 1.75rem;
-    width: 100%;
-    max-width: 540px;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .modal h2 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.01em;
-  }
-
+  .modal { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-md); padding: 1.75rem; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; }
+  .modal h2 { font-size: 16px; font-weight: 600; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
   .form-row { margin-bottom: 0.9rem; }
-
-  .form-row label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text2);
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
+  .form-row label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.04em; }
   .form-row textarea { height: 80px; resize: vertical; }
-
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-  .modal-actions {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    margin-top: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .toast {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    background: var(--accent);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 0.65rem 1rem;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-    z-index: 300;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.2s;
-    pointer-events: none;
-  }
-
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--accent); color: #fff; font-size: 13px; font-weight: 500; padding: 0.65rem 1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); z-index: 300; opacity: 0; transform: translateY(8px); transition: all 0.2s; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateY(0); }
-
   @media (max-width: 600px) {
-    header { padding: 1rem; }
-    main { padding: 1rem; }
+    header { padding: 1rem; } main { padding: 1rem; }
     .stats { grid-template-columns: repeat(2, 1fr); }
-    .card-grid { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
     .logo-sub { display: none; }
   }
@@ -439,17 +108,14 @@
       <div class="logo-sub">Investment Reference</div>
     </div>
   </div>
-  <div class="header-actions">
-    <button class="btn-primary" onclick="openModal()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Add position
-    </button>
-  </div>
+  <button class="btn-primary" onclick="openModal()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Add position
+  </button>
 </header>
 
 <main>
   <div class="stats" id="stats"></div>
-
   <div class="toolbar">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -462,7 +128,6 @@
       <option value="Alternatives">Alternatives</option>
     </select>
   </div>
-
   <div class="cards" id="cards"></div>
 </main>
 
@@ -470,39 +135,22 @@
   <div class="modal">
     <h2 id="modal-title">Add new position</h2>
     <div class="form-grid">
-      <div class="form-row">
-        <label>Position name</label>
-        <input type="text" id="f-name" placeholder="e.g. iShares S&P 500" />
-      </div>
-      <div class="form-row">
-        <label>Ticker</label>
-        <input type="text" id="f-ticker" placeholder="e.g. IVV" />
-      </div>
+      <div class="form-row"><label>Position name</label><input type="text" id="f-name" placeholder="e.g. iShares S&P 500" /></div>
+      <div class="form-row"><label>Ticker</label><input type="text" id="f-ticker" placeholder="e.g. IVV" /></div>
     </div>
-    <div class="form-row">
-      <label>Asset class</label>
+    <div class="form-row"><label>Asset class</label>
       <select id="f-class">
         <option value="Stocks">Stocks</option>
         <option value="Bonds">Bonds</option>
         <option value="Alternatives">Alternatives</option>
       </select>
     </div>
-    <div class="form-row">
-      <label>What it is</label>
-      <textarea id="f-what" placeholder="Brief description of the fund or position..."></textarea>
-    </div>
-    <div class="form-row">
-      <label>Why we own it</label>
-      <textarea id="f-why" placeholder="Investment rationale..."></textarea>
-    </div>
-    <div class="form-row">
-      <label>Where we own it</label>
-      <input type="text" id="f-where" placeholder="e.g. Across all Asset Allocation strategies" />
-    </div>
-    <div class="form-row">
-      <label>Largest holdings (comma separated)</label>
-      <input type="text" id="f-holdings" placeholder="e.g. AAPL (7.34%), MSFT (7.24%)" />
-    </div>
+    <div class="form-row"><label>What it is</label><textarea id="f-what" placeholder="Brief description of the fund or position..."></textarea></div>
+    <div class="form-row"><label>Plain English explanation</label><textarea id="f-plain" placeholder="How does this actually work in simple terms?"></textarea></div>
+    <div class="form-row"><label>Why we own it</label><textarea id="f-why" placeholder="Investment rationale..."></textarea></div>
+    <div class="form-row"><label>Where we own it</label><input type="text" id="f-where" placeholder="e.g. Across all Asset Allocation strategies" /></div>
+    <div class="form-row"><label>Fund page URL</label><input type="text" id="f-url" placeholder="https://..." /></div>
+    <div class="form-row"><label>Largest holdings (comma separated — stocks &amp; alts only)</label><input type="text" id="f-holdings" placeholder="e.g. AAPL (7.34%), MSFT (7.24%)" /></div>
     <div class="modal-actions">
       <button class="btn-ghost" onclick="closeModal()">Cancel</button>
       <button class="btn-primary" onclick="savePosition()">Save position</button>
@@ -513,45 +161,296 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const POSITIONS_KEY = 'aws_glossary_positions';
+const POSITIONS_KEY = 'aws_glossary_v2';
 
 const SEED = [
-  {id:1,name:"iShares S&P 500",ticker:"IVV",cls:"Stocks",what:"S&P 500 index fund.",why:"Cheap beta (market exposure). We want the return profile from large US companies and this is a very efficient way to get that exposure.",where:"Across all Asset Allocation strategies and Tactical Equity.",holdings:["AAPL (7.34%)","MSFT (7.24%)","AMZN (3.47%)","NVDA (3.21%)","GOOGL (2.12%)"]},
-  {id:2,name:"VanEck Vectors M* Wide Moat",ticker:"MOAT",cls:"Stocks",what:"US Large Cap ETF. Morningstar creates an index of companies they believe have a wide moat (sustainable competitive advantage), trading at the lowest price/fair value ratios.",why:"This active, factor-based screen has a proven track record of competing with the S&P 500. A fairly priced complement to our cheap core position.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["DIS (2.84%)","USB (2.81%)","MAS (2.73%)","GOOGL (2.73%)","WFC (2.68%)"]},
-  {id:3,name:"Schwab Large Cap Growth",ticker:"SCHG",cls:"Stocks",what:"Passive Large Cap ETF tracking the Dow Jones U.S. Large-Cap Growth Total Stock Market Index.",why:"Complement to IVV & Moat Core. Allows toggling between core/growth/value based on relative valuations, macro factors, or market conditions.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["AAPL (13.04%)","MSFT (12.85%)","NVDA (5.69%)","GOOGL (3.75%)","META (3.49%)"]},
-  {id:4,name:"Vanguard Value",ticker:"VTV",cls:"Stocks",what:"Passive Large Cap ETF tracking the CRSP US Large Cap Value Index, measuring the investment return of large-cap value stocks.",why:"Complement to IVV & Moat Large Cap Core. Allows toggling between core/growth/value based on relative valuations, macro factors, or market conditions.",where:"Across all Asset Allocation strategies and inside Tactical Equity.",holdings:["BRKB (3.82%)","UNH (3.04%)","XOM (2.60%)","JPM (2.48%)","JNJ (2.19%)"]},
-  {id:5,name:"Invesco High Quality Mid Cap",ticker:"XMHQ",cls:"Stocks",what:"MidCap Quality ETF tracking the S&P MidCap 400 Quality Index.",why:"High quality midcap exposure with a quality factor screen.",where:"",holdings:["CSL (4.95%)","EME (4.83%)","FIX (3.16%)","MANH (2.82%)","SFM (2.44%)"]},
-  {id:6,name:"Fidelity Mid Cap Select",ticker:"FMDE",cls:"Stocks",what:"Actively Managed Mid-Cap ETF that invests at least 80% of assets in common stocks included in the Russell Midcap Index.",why:"Active mid-cap management with broad Russell Midcap exposure.",where:"",holdings:["HWM (1.18%)","AXON (1.04%)","BK (1.03%)","RBLX (1.02%)","LNG (0.95%)"]},
-  {id:7,name:"iShares Core EAFE",ticker:"IEFA",cls:"Stocks",what:"Seeks to track investment results of large-, mid-, and small-cap developed market equities, excluding the U.S. and Canada. Tracks the MSCI EAFE IMI Index.",why:"Low cost exposure to a broad range of companies in Europe, Australia, Asia, and the Far East. Good way to diversify internationally and seek long-term growth.",where:"",holdings:["SAP (1.46%)","ASML (1.30%)","NESN (1.15%)","ROG (1.02%)","HSBA (1.02%)"]},
-  {id:8,name:"iShares Small Cap Factor",ticker:"SMLF",cls:"Stocks",what:"Seeks to track the STOXX U.S. Small Cap Equity Factor Index.",why:"Efficient access to U.S. small-cap stocks based on five factors: value, quality, momentum, low size, and low volatility.",where:"",holdings:["EME (1.08%)","CVNA (0.87%)","JBL (0.83%)","IBKR (0.70%)","NTNX (0.62%)"]},
-  {id:9,name:"Goldman Sachs GQG Partners Intl Opps",ticker:"GSIMX",cls:"Stocks",what:"Tracks the MSCI ACWI ex USA Index using a bottom-up, growth-at-reasonable-price approach focusing on fundamentals across developed and emerging markets.",why:"Offers international portfolio diversification by seeking to invest in enduring and compelling ideas across developed and emerging market opportunities.",where:"",holdings:["PM (7.36%)","TSX: ENB (3.35%)","LON:BATS (3.22%)","CB (2.92%)","LON:AZN (2.87%)"]},
-  {id:10,name:"Goldman Sachs GQG Partners Intl Equity Income",ticker:"GSIKX",cls:"Stocks",what:"Tracks the MSCI EAFE benchmark, building the portfolio one company at a time by looking for stocks trading at a discount with potential for strong returns.",why:"Defensively-tilted international equity allocation balancing dividend income with steady capital appreciation. Strong complement for global exposure with a value and income focus.",where:"",holdings:["LON: SHEL (5.06%)","LON: HSBA (4.12%)","CCEP (3.93%)","TYO: 8316 (3.63%)"]},
-  {id:11,name:"WisdomTree EM High Dividend",ticker:"DEM",cls:"Stocks",what:"Seeks to track the investment results of high-dividend-yielding companies in the emerging markets region.",why:"Way to gain exposure to targeted emerging market all cap equity of high dividend yielding companies.",where:"",holdings:["CICHF (4.70%)","BVMF:VALE3 (3.46%)","TPE:2454 (3.11%)","IDCBF (2.37%)"]},
-  {id:12,name:"JP Morgan Covered Call",ticker:"JEPI",cls:"Stocks",what:"JPMorgan Equity Premium Income ETF seeks to deliver monthly distributable income and equity market exposure with less volatility.",why:"Monthly income generation with reduced equity volatility.",where:"",holdings:["NVDA (1.68%)","ORCL (1.63%)","META (1.62%)","TT (1.59%)","AMZN (1.59%)"]},
-  {id:13,name:"BlackRock REIT",ticker:"BIREX",cls:"Stocks",what:"Actively managed mutual fund that primarily invests in equity securities of companies engaged in the U.S. real estate sector.",why:"Broad exposure to U.S. and international real-estate stocks. Invests at least 80% in U.S. real estate equities and up to 20% internationally. Provides good inflation protection.",where:"",holdings:["PLD (7.62%)","AMT (6.41%)","WELL (5.87%)","AVB (5.30%)","EQIX (5.30%)"]},
-  {id:14,name:"Lazard Global Listed Infrastructure",ticker:"GLIFX",cls:"Stocks",what:"Seeks total return by investing in a select universe of preferred infrastructure companies with potential to achieve lower volatility returns exceeding inflation.",why:"Diversification opportunity through preferred infrastructure companies. Powerful complement to real assets, private equity infrastructure, and global equity allocations.",where:"",holdings:["LON: NG (7.97%)","BME: FER (7.74%)","BIT: SRG (7.13%)","EPA: DG (4.87%)"]},
-  {id:15,name:"Guggenheim Total Return",ticker:"GIBIX",cls:"Bonds",what:"Actively managed fixed-income fund seeking attractive total returns by prudently managing credit and duration risk through a multi-sector approach driven by relative value.",why:"Invests broadly across U.S. investment-grade bonds, MBS, ABS, and opportunistic allocations to high-yield and emerging-market debt through a core-plus approach.",where:"",holdings:["Uniform MBS 30Y (5.50%)","Uniform MBS 30Y (3.98%)","Uniform MBS 15Y (1.96%)"]},
-  {id:16,name:"Loomis Bond",ticker:"LSIIX",cls:"Bonds",what:"Loomis Sayles Investment Grade Bond Fund seeks high total investment return through a combination of current income and capital appreciation.",why:"Provides exposure to high-quality, investment-grade corporate bonds and other fixed-income securities, including Canadian issuers and high-yield securities.",where:"",holdings:["US Long Bond Sep25 (13%)","2Y Treasury Future Sept25 (6.86%)","10Y Treasury Future Sept25 (6.18%)"]},
-  {id:17,name:"Diamond Hill Core Bond",ticker:"DHRIX",cls:"Bonds",what:"Fixed-income fund emphasizing undervalued securities and securitized products to achieve higher credit quality and yield using an active, value-driven approach.",why:"Provides exposure to investment-grade fixed income securities, particularly mortgage-related and mortgage-backed securities.",where:"",holdings:["GVMXX (3.85%)","T.3 02.15.48 (3.32%)","T.4 02.15.34 (2.51%)"]},
-  {id:18,name:"Simplify Aggregate Bond",ticker:"AGGH",cls:"Bonds",what:"Actively managed to create core bond exposure with enhanced yield via structural income opportunities such as option writing and curve positioning.",why:"Option for investors seeking higher yields than investment grade bonds normally provide, with higher total return potential.",where:"",holdings:["AGG (94.72%)"]},
-  {id:19,name:"JP Morgan Income",ticker:"JMSIX",cls:"Bonds",what:"Flexible, well-diversified fixed income approach seeking to deliver attractive, reliable income through genuine diversification to reduce portfolio volatility.",why:"Flexible, income-driven multi-sector bond solution. Strategic addition for income-oriented investors or those seeking enhanced yield with active management.",where:"",holdings:[]},
-  {id:20,name:"Schwab Short Duration Treasury",ticker:"SCHO",cls:"Bonds",what:"Tracks the performance of the short-term U.S. Treasury bond market with remaining maturities of between 1 and 3 years.",why:"Straightforward, low-cost fund offering potential tax-efficiency through simple access to short-term US Treasury securities. Provides income from the short-end of the Treasury bond curve.",where:"",holdings:["T.1.5 01.31.27 (1.61%)","T4.25 12.31.26 (1.52%)"]},
-  {id:21,name:"Goldman Sachs Dynamic Muni",ticker:"GSMTX",cls:"Bonds",what:"Goldman Sachs Dynamic Municipal Income Fund seeks a high level of current income exempt from regular federal income tax.",why:"Attractive tax-free income relative to both municipal bonds and comparable-term taxable bonds. Especially appealing to those in higher tax brackets.",where:"",holdings:["PR.PRCGEN 4.33 07.01.2040 (1.36%)","AZ.AZSMED 01.01.2037 (0.57%)"]},
-  {id:22,name:"Franklin Colorado",ticker:"DCOIX",cls:"Bonds",what:"Invests at least 80% of net assets in municipal securities whose income is exempt from federal income tax and Colorado state personal income taxes.",why:"Predominantly Colorado municipal bonds delivering income exempt from both federal and Colorado state personal income taxes, maximizing after-tax yield for Colorado residents.",where:"",holdings:["PR.PRCDEV 7.5 08.20.2040 (2.67%)","CO.DENSCD 5 12.01.2045 (2.16%)"]},
-  {id:23,name:"Goldman Sachs Ultrashort",ticker:"GPPIX",cls:"Bonds",what:"Goldman Sachs Short-Term Conservative Income Fund seeks to generate current income while maintaining an emphasis on preservation of capital and liquidity.",why:"Provides potential for enhanced return vs money market funds. The ultra-short duration seeks potentially higher returns while maintaining emphasis on capital preservation and liquidity.",where:"",holdings:["Manufacturers & Traders Trust 4.65% (1.44%)","US Treasury Notes 4.25% (1.38%)"]},
-  {id:24,name:"JP Morgan Ultrashort",ticker:"JPST",cls:"Bonds",what:"Invests primarily in a diversified portfolio of short-term, investment grade fixed and floating-rate corporate and structured debt. Targets portfolio duration of less than one year.",why:"Current income with a focus on risk management. Competitively priced at 0.18%. Has been in top quartile returns with top decile risk-adjusted returns since inception.",where:"",holdings:["JPMORGAN US GOVT MMKT (4.50%)","DZ BANK NY (0.89%)"]},
-  {id:25,name:"MFS Emerging Market Debt",ticker:"MEDIX",cls:"Bonds",what:"Provides broad emerging market debt exposure, combining attractive yield potential with portfolio diversification away from US-centric fixed income.",why:"Enhances a portfolio by providing higher-yielding emerging markets debt exposure, adding global diversification and income potential beyond traditional bonds.",where:"",holdings:["USD Cash (4.49%)","US Treasury Notes 2.75% (4.45%)"]},
-  {id:26,name:"GlobalX MLP & Energy Infrastructure",ticker:"MLPX",cls:"Bonds",what:"Tax-efficient vehicle for gaining access to MLPs and similar entities, such as General Partners of MLPs and energy infrastructure corporations.",why:"Tax-efficient way to gain exposure to midstream infrastructure entities such as pipelines and storage facilities with less sensitivity to energy prices.",where:"",holdings:["ENB (8.96%)","WMB (8.94%)","KMI (8.90%)","OKE (7.70%)"]},
-  {id:27,name:"Prudential High Yield Z",ticker:"PHYZX",cls:"Bonds",what:"PGIM High Yield Fund seeks to maximize current income by investing primarily in high-yield bonds rated Ba or lower by Moody's or BB or lower by S&P.",why:"Good way to gain exposure to high yield bonds that may provide higher current income as well as potential capital appreciation.",where:"",holdings:["T.3.875 11.30.27 (1.54%)","MEDIND.3.875 04.01.29 (0.89%)"]},
-  {id:28,name:"Invesco Taxable Muni",ticker:"BAB",cls:"Bonds",what:"Based on the ICE BofAML US Taxable Municipal Securities Plus Index, tracking the performance of US dollar-denominated taxable municipal debt.",why:"Adds high-quality taxable municipal bond exposure providing attractive yield, intermediate duration, and diversification between Treasuries and corporate bonds.",where:"",holdings:["CA.CAS 7.55 04.01.2039 (1.41%)","ILLINOIS ST 6.9% (1.10%)"]},
-  {id:29,name:"Janus Henderson AAA CLO ETF",ticker:"JAAA",cls:"Bonds",what:"Invests in high-quality CLOs seeking to deliver risk-managed access to an asset class that may provide consistent risk-adjusted returns with low correlation to traditional fixed income.",why:"Provides exposure to the high-quality, floating rate CLO market in a liquid, transparent manner.",where:"",holdings:["OCP CLO Ltd 5.48% (1.16%)","Octagon Inv Partners 51 5.32% (1.14%)"]},
-  {id:30,name:"First Trust Preferred Stock",ticker:"FPE",cls:"Bonds",what:"Actively managed fund seeking total return and current income by investing at least 80% in preferred securities and income-producing debt securities.",why:"Adds income-oriented exposure through hybrid securities that offer higher yields than traditional bonds.",where:"",holdings:["BANK OF AMERICA CORP Variable (2.78%)","Wells Fargo Series L 7.500% (2.20%)"]},
-  {id:31,name:"AQR Multi Strat",ticker:"QDSIX",cls:"Alternatives",what:"AQR Diversifying Strategies Fund seeks capital appreciation by allocating to six AQR alternative mutual funds with tactical positioning. Combines multiple alternative strategies into a single core allocation.",why:"Good diversifying source seeking results with reduced correlation to stocks and bond market movements. Helpful for risk reduction or return enhancement.",where:"",holdings:["AQRRZ (29.95%)","QMNRX (19.34%)","QSPRX (13.31%)"]},
-  {id:32,name:"BlackRock Commodities",ticker:"BICSX",cls:"Alternatives",what:"Invests in two strategies approximately equally: commodity-linked derivatives and equity investments in commodity-related companies including mining, energy, and agricultural companies.",why:"Good way to add complete exposure to commodities across the entire commodities value chain through equities and futures.",where:"",holdings:["TSX: NTR (4.43%)","CTVA (3.48%)","XOM (2.45%)"]},
-  {id:33,name:"Versus Real Estate",ticker:"VCMIX",cls:"Alternatives",what:"Harrison Street Estate Fund LLC — a non-diversified continuously offered closed-end interval fund designed as a core real estate holding across the broad capital structure of the asset class.",why:"Provides exposure to the real estate market including private equity and debt and public equity and debt.",where:"",holdings:["CBRE US Logistics Partners (11.64%)","CLARION LION PROPERTIES FUND (8.62%)"]},
-  {id:34,name:"Versus Real Assets",ticker:"VCRRX",cls:"Alternatives",what:"Harrison Street Real Assets Fund LLC — a non-diversified continuously offered closed-end interval fund seeking long-term real returns through current income and capital appreciation.",why:"Core real assets holding providing exposure to private infrastructure, farmlands, timberland and public real assets.",where:"",holdings:["Harrison Street Social Infrastructure Fund (10.98%)","BTG Pactual US Timberland (10.91%)"]},
-  {id:35,name:"Cliffwater Private Credit",ticker:"CCLFX",cls:"Alternatives",what:"Cliffwater Corporate Lending Fund — one of the largest allocators to private debt, delivering unique access to direct lending with a multi-lender model.",why:"Provides exposure to middle market loans which have produced high income with limited downside risk during periods of volatility.",where:"",holdings:["GVMXX (5.14%)","SILVERPF (4.59%)","BARINGPC (3.32%)"]},
-  {id:36,name:"Simplify Managed Futures",ticker:"CTA",cls:"Alternatives",what:"Seeks long-term capital appreciation by systematically investing in futures to create an absolute return profile with low correlation to equities.",why:"Provides U.S. and Canadian commodity exposure as well as rates exposure, while also providing low correlation to equities.",where:"",holdings:["TREASURY BILL DN 7/25 (27.87%)","CORU5 COM (26.42%)","CORZ5 COM (20.15%)"]}
+  {id:1,name:"iShares S&P 500",ticker:"IVV",cls:"Stocks",
+    what:"S&P 500 index fund tracking the 500 largest U.S. public companies.",
+    plain:"Owning IVV is like owning a tiny slice of the 500 biggest companies in America — Apple, Microsoft, Amazon, and so on — all in one fund. When the U.S. stock market goes up, IVV goes up. It's the simplest and cheapest way to capture broad U.S. equity returns.",
+    why:"Cheap beta (market exposure). We want the return profile from large U.S. companies and this is a very efficient way to get that exposure.",
+    where:"Across all Asset Allocation strategies and Tactical Equity.",
+    url:"https://www.ishares.com/us/products/239726/",
+    holdings:["AAPL (7.34%)","MSFT (7.24%)","AMZN (3.47%)","NVDA (3.21%)","GOOGL (2.12%)"]},
+
+  {id:2,name:"VanEck Vectors M* Wide Moat",ticker:"MOAT",cls:"Stocks",
+    what:"US Large Cap ETF. Morningstar selects companies they believe have a sustainable competitive advantage and are trading below their estimated fair value.",
+    plain:"Morningstar's analysts identify companies they believe have durable competitive advantages — think brand strength, switching costs, or network effects — that will last at least 20 years. From that list, they only buy the ones currently trading at a discount to what they think they're worth. It's a disciplined value-meets-quality screen applied to large U.S. companies.",
+    why:"This active, factor-based screen has a proven track record of competing with the S&P 500. A fairly priced complement to our cheap core IVV position.",
+    where:"Across all Asset Allocation strategies and inside Tactical Equity.",
+    url:"https://www.vaneck.com/us/en/investments/morningstar-wide-moat-etf-moat/",
+    holdings:["DIS (2.84%)","USB (2.81%)","MAS (2.73%)","GOOGL (2.73%)","WFC (2.68%)"]},
+
+  {id:3,name:"Schwab Large Cap Growth",ticker:"SCHG",cls:"Stocks",
+    what:"Passive Large Cap ETF tracking the Dow Jones U.S. Large-Cap Growth Total Stock Market Index.",
+    plain:"A low-cost fund that owns the fastest-growing large U.S. companies — think high-revenue-growth tech names like Apple, Microsoft, and NVIDIA. It tilts heavily toward technology and tends to outperform in bull markets but can fall harder in downturns.",
+    why:"Complement to IVV and MOAT. Allows toggling toward growth when valuations and macro conditions favor it.",
+    where:"Across all Asset Allocation strategies and inside Tactical Equity.",
+    url:"https://www.schwabassetmanagement.com/products/schg",
+    holdings:["AAPL (13.04%)","MSFT (12.85%)","NVDA (5.69%)","GOOGL (3.75%)","META (3.49%)"]},
+
+  {id:4,name:"Vanguard Value",ticker:"VTV",cls:"Stocks",
+    what:"Passive Large Cap ETF tracking the CRSP US Large Cap Value Index.",
+    plain:"Owns large U.S. companies that look cheap relative to their earnings, book value, or dividends — financials, healthcare, energy, and consumer staples dominate. It's the counterweight to growth; tends to outperform when interest rates rise or when the market rotates away from expensive tech.",
+    why:"Complement to IVV and MOAT. Allows toggling toward value when valuations and macro conditions favor it.",
+    where:"Across all Asset Allocation strategies and inside Tactical Equity.",
+    url:"https://investor.vanguard.com/etf/profile/VTV",
+    holdings:["BRKB (3.82%)","UNH (3.04%)","XOM (2.60%)","JPM (2.48%)","JNJ (2.19%)"]},
+
+  {id:5,name:"Invesco High Quality Mid Cap",ticker:"XMHQ",cls:"Stocks",
+    what:"MidCap Quality ETF tracking the S&P MidCap 400 Quality Index.",
+    plain:"Focuses on mid-sized U.S. companies that score well on quality metrics like return on equity, earnings stability, and balance sheet strength. Mid-caps tend to offer more growth potential than large-caps with less volatility than small-caps — the quality screen adds another layer of discipline.",
+    why:"High quality midcap exposure with a quality factor screen.",
+    where:"",
+    url:"https://www.invesco.com/us/financial-products/etfs/product-detail?audienceType=Investor&ticker=XMHQ",
+    holdings:["CSL (4.95%)","EME (4.83%)","FIX (3.16%)","MANH (2.82%)","SFM (2.44%)"]},
+
+  {id:6,name:"Fidelity Mid Cap Select",ticker:"FMDE",cls:"Stocks",
+    what:"Actively Managed Mid-Cap ETF investing at least 80% in stocks from the Russell Midcap Index.",
+    plain:"A human-managed mid-cap fund where Fidelity's analysts pick individual stocks they believe will outperform. Unlike XMHQ's rules-based screen, this relies on fundamental research — the manager has discretion to overweight or underweight companies based on conviction.",
+    why:"Active mid-cap management with broad Russell Midcap exposure.",
+    where:"",
+    url:"https://www.fidelity.com/etfs/fmde",
+    holdings:["HWM (1.18%)","AXON (1.04%)","BK (1.03%)","RBLX (1.02%)","LNG (0.95%)"]},
+
+  {id:7,name:"iShares Core EAFE",ticker:"IEFA",cls:"Stocks",
+    what:"Tracks the MSCI EAFE IMI Index — large, mid, and small cap developed market equities excluding the U.S. and Canada.",
+    plain:"Owning IEFA is like owning a slice of the stock markets of Europe, Japan, Australia, and similar developed economies. It gives exposure to companies like SAP, ASML, Nestlé, and HSBC. It diversifies away from the U.S. dollar and U.S.-specific risks while staying in stable, developed markets.",
+    why:"Low cost exposure to a broad range of companies in Europe, Australia, Asia, and the Far East. Good way to diversify internationally and seek long-term growth.",
+    where:"",
+    url:"https://www.ishares.com/us/products/239626/",
+    holdings:["SAP (1.46%)","ASML (1.30%)","NESN (1.15%)","ROG (1.02%)","HSBA (1.02%)"]},
+
+  {id:8,name:"iShares Small Cap Factor",ticker:"SMLF",cls:"Stocks",
+    what:"Tracks the STOXX U.S. Small Cap Equity Factor Index, selecting small-cap stocks based on five factors.",
+    plain:"Rather than just buying all small U.S. companies, this fund screens them for five characteristics historically associated with outperformance: value (cheap price), quality (strong financials), momentum (recent price strength), low size (smaller even within small-caps), and low volatility (less price swings). It's a smarter way to own small-caps.",
+    why:"Efficient access to U.S. small-cap stocks based on five factors: value, quality, momentum, low size, and low volatility.",
+    where:"",
+    url:"https://www.ishares.com/us/products/272820/",
+    holdings:["EME (1.08%)","CVNA (0.87%)","JBL (0.83%)","IBKR (0.70%)","NTNX (0.62%)"]},
+
+  {id:9,name:"Goldman Sachs GQG Partners Intl Opps",ticker:"GSIMX",cls:"Stocks",
+    what:"Tracks the MSCI ACWI ex USA Index using a bottom-up, growth-at-reasonable-price approach across developed and emerging markets.",
+    plain:"GQG's managers travel the world looking for companies with durable competitive advantages — strong brands, dominant market positions, pricing power — trading at reasonable prices. Unlike a passive fund, they can go anywhere outside the U.S., including emerging markets, and can hold concentrated positions in their best ideas.",
+    why:"Offers international portfolio diversification by seeking enduring and compelling ideas across developed and emerging market opportunities.",
+    where:"",
+    url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-opportunities-fund.html",
+    holdings:["PM (7.36%)","TSX: ENB (3.35%)","LON:BATS (3.22%)","CB (2.92%)","LON:AZN (2.87%)"]},
+
+  {id:10,name:"Goldman Sachs GQG Partners Intl Equity Income",ticker:"GSIKX",cls:"Stocks",
+    what:"Tracks the MSCI EAFE benchmark, building the portfolio one company at a time by looking for stocks in local markets trading at a discount with potential for strong returns.",
+    plain:"Similar to GSIMX but with a stronger income focus — GQG targets international companies that pay meaningful dividends and look undervalued. The defensive tilt means it tends to hold up better than pure growth international funds when markets get rocky.",
+    why:"Defensively-tilted international equity allocation balancing dividend income with steady capital appreciation. Strong complement for global exposure with a value and income focus.",
+    where:"",
+    url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-gqg-partners-international-equity-income-fund.html",
+    holdings:["LON: SHEL (5.06%)","LON: HSBA (4.12%)","CCEP (3.93%)","TYO: 8316 (3.63%)"]},
+
+  {id:11,name:"WisdomTree EM High Dividend",ticker:"DEM",cls:"Stocks",
+    what:"Seeks to track the investment results of high-dividend-yielding companies in the emerging markets region.",
+    plain:"Owns dividend-paying companies in places like China, Brazil, Taiwan, and India. Emerging markets can offer higher growth than developed markets, and the high-dividend screen filters toward more profitable, cash-generating companies rather than speculative growth names.",
+    why:"Targeted exposure to emerging market all cap equity of high dividend yielding companies.",
+    where:"",
+    url:"https://www.wisdomtree.com/investments/etfs/equity/dem",
+    holdings:["CICHF (4.70%)","BVMF:VALE3 (3.46%)","TPE:2454 (3.11%)","IDCBF (2.37%)"]},
+
+  {id:12,name:"JP Morgan Covered Call",ticker:"JEPI",cls:"Stocks",
+    what:"JPMorgan Equity Premium Income ETF. Owns S&P 500 stocks and sells call options against the portfolio to generate monthly income.",
+    plain:"JEPI owns a diversified basket of large U.S. stocks and then sells 'covered call' options on those positions each month. Selling options generates a cash premium — that's where the high monthly income comes from. The tradeoff is that when the market surges, JEPI lags, because it's given away some of the upside in exchange for the premium income.",
+    why:"Monthly income generation with equity exposure and reduced volatility relative to a straight S&P 500 fund.",
+    where:"",
+    url:"https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-46641q332",
+    holdings:["NVDA (1.68%)","ORCL (1.63%)","META (1.62%)","TT (1.59%)","AMZN (1.59%)"]},
+
+  {id:13,name:"BlackRock REIT",ticker:"BIREX",cls:"Stocks",
+    what:"Actively managed mutual fund investing primarily in equity securities of U.S. real estate companies.",
+    plain:"Owns publicly traded real estate investment trusts (REITs) — companies that own warehouses, cell towers, apartments, hospitals, data centers, and office buildings. REITs are required by law to distribute at least 90% of their income as dividends, making them strong income producers. BlackRock's managers actively pick which REITs they believe offer the best risk-adjusted returns.",
+    why:"Broad exposure to U.S. and international real-estate stocks. Provides good inflation protection since rents tend to rise with inflation.",
+    where:"",
+    url:"https://www.blackrock.com/us/individual/products/239578/",
+    holdings:["PLD (7.62%)","AMT (6.41%)","WELL (5.87%)","AVB (5.30%)","EQIX (5.30%)"]},
+
+  {id:14,name:"Lazard Global Listed Infrastructure",ticker:"GLIFX",cls:"Stocks",
+    what:"Seeks total return by investing in a select universe of preferred infrastructure companies — utilities, toll roads, airports, pipelines — globally.",
+    plain:"Infrastructure companies own assets people can't easily live without — electricity grids, water systems, toll roads, airports, and gas pipelines. These businesses typically have long-term contracts or regulated revenues that grow with inflation, which makes them low-volatility, income-generating investments that behave differently from the broader stock market.",
+    why:"Diversification through preferred infrastructure companies. Powerful complement to real assets, private equity infrastructure, and global equity allocations.",
+    where:"",
+    url:"https://www.lazardassetmanagement.com/us/individual/funds/lazard-global-listed-infrastructure-portfolio/",
+    holdings:["LON: NG (7.97%)","BME: FER (7.74%)","BIT: SRG (7.13%)","EPA: DG (4.87%)"]},
+
+  {id:15,name:"Guggenheim Total Return",ticker:"GIBIX",cls:"Bonds",
+    what:"Actively managed fixed-income fund seeking attractive total returns by managing credit and duration risk through a multi-sector approach driven by relative value.",
+    plain:"Guggenheim's team scans the entire bond market — government bonds, corporate bonds, mortgage-backed securities, and even some high-yield — looking for wherever they see the best value relative to risk. They're not constrained to one type of bond, so they can rotate toward whatever part of the market they think offers the most attractive yield for the risk taken.",
+    why:"Core-plus bond exposure broader than a standard bond index fund. Invests opportunistically across the fixed income spectrum.",
+    where:"",
+    url:"https://www.guggenheiminvestments.com/mutual-funds/strategy/guggenheim-total-return-bond-fund",
+    holdings:[]},
+
+  {id:16,name:"Loomis Bond",ticker:"LSIIX",cls:"Bonds",
+    what:"Loomis Sayles Investment Grade Bond Fund seeking high total investment return through current income and capital appreciation.",
+    plain:"Loomis Sayles is known for taking a more aggressive approach within investment-grade bonds — they'll stretch into higher-yielding corners of the bond market, including some high-yield and foreign bonds, when they see opportunity. Their bottom-up credit research is the core edge.",
+    why:"Provides exposure to high-quality, investment-grade corporate bonds with flexibility to hold Canadian issuers and selective high-yield securities.",
+    where:"",
+    url:"https://www.loomissayles.com/investment-grade-bond-fund",
+    holdings:[]},
+
+  {id:17,name:"Diamond Hill Core Bond",ticker:"DHRIX",cls:"Bonds",
+    what:"Fixed-income fund emphasizing undervalued securities and securitized products using an active, value-driven approach.",
+    plain:"Diamond Hill applies the same value-investing philosophy used in equities to the bond market — they look for bonds they believe are priced below their intrinsic value. They have a particular focus on securitized products like mortgage-backed securities, where their research can find pricing inefficiencies.",
+    why:"Provides exposure to investment-grade fixed income with a value tilt, particularly mortgage-related and mortgage-backed securities.",
+    where:"",
+    url:"https://www.diamond-hill.com/strategies/core-bond/",
+    holdings:[]},
+
+  {id:18,name:"Simplify Aggregate Bond",ticker:"AGGH",cls:"Bonds",
+    what:"Actively managed core bond exposure with enhanced yield via structural income opportunities such as option writing and curve positioning.",
+    plain:"AGGH starts with a core position in AGG (the standard U.S. bond index) and then overlays options strategies to boost yield — similar in concept to how JEPI boosts equity returns. It's a way to get bond market exposure while generating more income than a plain bond index fund would offer.",
+    why:"Higher yield potential than standard investment grade bond funds for investors seeking enhanced total return.",
+    where:"",
+    url:"https://www.simplify.us/etfs/aggh-simplify-aggregate-bond-etf",
+    holdings:[]},
+
+  {id:19,name:"JP Morgan Income",ticker:"JMSIX",cls:"Bonds",
+    what:"Flexible, well-diversified fixed income approach seeking attractive, reliable income across multiple bond sectors.",
+    plain:"JPMorgan's income team invests across the full bond spectrum — mortgages, corporate bonds, government bonds, high yield, and more — prioritizing income generation above all else. The flexibility to shift between sectors based on where income is most attractive gives it an edge over funds locked into a single bond type.",
+    why:"Flexible, income-driven multi-sector bond solution. Strategic addition for income-oriented investors or those seeking enhanced yield with active management.",
+    where:"",
+    url:"https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-income-fund-class-i-shares-46641q357",
+    holdings:[]},
+
+  {id:20,name:"Schwab Short Duration Treasury",ticker:"SCHO",cls:"Bonds",
+    what:"Tracks the performance of the short-term U.S. Treasury bond market with maturities of 1–3 years.",
+    plain:"Owns U.S. government bonds that mature in 1–3 years. Because the maturities are short, the price barely moves when interest rates change — it's essentially a cash-like position that earns a bit more yield than a money market fund. Very low risk, very stable.",
+    why:"Low-cost, tax-efficient access to short-term Treasuries. Provides income from the short-end of the yield curve with minimal interest rate risk.",
+    where:"",
+    url:"https://www.schwabassetmanagement.com/products/scho",
+    holdings:[]},
+
+  {id:21,name:"Goldman Sachs Dynamic Muni",ticker:"GSMTX",cls:"Bonds",
+    what:"Goldman Sachs Dynamic Municipal Income Fund seeking high current income exempt from regular federal income tax.",
+    plain:"Owns municipal bonds — debt issued by states, cities, and public authorities. The key benefit: interest earned on munis is typically exempt from federal income tax, and sometimes state taxes too. The 'dynamic' part means Goldman's team actively adjusts duration and credit quality based on market conditions rather than tracking a static index.",
+    why:"Attractive tax-free income. Especially appealing for clients in higher tax brackets where after-tax yield is meaningfully better than taxable alternatives.",
+    where:"",
+    url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-dynamic-municipal-income-fund.html",
+    holdings:[]},
+
+  {id:22,name:"Franklin Colorado",ticker:"DCOIX",cls:"Bonds",
+    what:"Invests at least 80% in municipal securities exempt from both federal income tax and Colorado state personal income taxes.",
+    plain:"A Colorado-specific muni bond fund — it owns bonds issued by Colorado state and local governments, which means interest is exempt from both federal and Colorado state income taxes. For Colorado residents in higher tax brackets, the effective after-tax yield is often better than comparable taxable bonds.",
+    why:"Maximizes after-tax yield for Colorado residents by providing income exempt from both federal and state income taxes.",
+    where:"",
+    url:"https://www.franklintempleton.com/investments/options/mutual-funds/products/4408/SINGLCLASS/franklin-colorado-tax-free-income-fund/FRCOX",
+    holdings:[]},
+
+  {id:23,name:"Goldman Sachs Ultrashort",ticker:"GPPIX",cls:"Bonds",
+    what:"Goldman Sachs Short-Term Conservative Income Fund seeking current income with emphasis on capital preservation and liquidity.",
+    plain:"One step up from a money market fund — it owns very short-term, high-quality bonds and notes that mature in under a year. You get slightly more yield than cash while keeping risk extremely low. Used as a parking spot for capital that needs to stay liquid but should earn more than sitting in a bank account.",
+    why:"Potential for enhanced return versus money market funds while maintaining strong emphasis on capital preservation and liquidity.",
+    where:"",
+    url:"https://www.gsam.com/content/gsam/us/en/individual/products/fund-finder/goldman-sachs-short-term-conservative-income-fund.html",
+    holdings:[]},
+
+  {id:24,name:"JP Morgan Ultrashort",ticker:"JPST",cls:"Bonds",
+    what:"Invests in a diversified portfolio of short-term, investment grade fixed and floating-rate corporate and structured debt. Targets portfolio duration of less than one year.",
+    plain:"Similar to GPPIX but with a slight bias toward corporate bonds rather than government securities, which typically means a bit more yield for a bit more credit risk — though still very conservative overall. The floating-rate component means yields adjust upward quickly when interest rates rise.",
+    why:"Current income with a focus on risk management. Competitively priced at 0.18% with top quartile risk-adjusted returns since inception.",
+    where:"",
+    url:"https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-ultra-short-income-etf-46641q209",
+    holdings:[]},
+
+  {id:25,name:"MFS Emerging Market Debt",ticker:"MEDIX",cls:"Bonds",
+    what:"Broad emerging market debt exposure combining attractive yield potential with portfolio diversification.",
+    plain:"Owns bonds issued by governments and companies in emerging market countries — Brazil, Mexico, Indonesia, South Africa, and others. These bonds pay higher interest rates than U.S. or European bonds because they carry more risk — currency risk, political risk, and economic volatility. The higher yield is the compensation for those risks.",
+    why:"Higher-yielding emerging markets debt exposure adding global diversification and income potential beyond traditional bonds.",
+    where:"",
+    url:"https://www.mfs.com/en-us/individual-investor/products/funds/mfs-emerging-markets-debt-fund.html",
+    holdings:[]},
+
+  {id:26,name:"GlobalX MLP & Energy Infrastructure",ticker:"MLPX",cls:"Bonds",
+    what:"Tax-efficient vehicle for gaining access to MLPs and energy infrastructure corporations such as pipeline and storage operators.",
+    plain:"MLPs (Master Limited Partnerships) own the pipelines, storage terminals, and processing facilities that move oil and natural gas around the country. They charge fees based on volume — not commodity prices — which makes their revenues more stable than oil producers. MLPX is structured to avoid the complex tax forms (K-1s) that direct MLP ownership creates.",
+    why:"Tax-efficient midstream infrastructure exposure with less sensitivity to energy prices than E&P companies.",
+    where:"",
+    url:"https://www.globalxetfs.com/funds/mlpx/",
+    holdings:[]},
+
+  {id:27,name:"Prudential High Yield Z",ticker:"PHYZX",cls:"Bonds",
+    what:"PGIM High Yield Fund seeking to maximize current income by investing primarily in high-yield bonds rated Ba or lower by Moody's or BB or lower by S&P.",
+    plain:"High-yield bonds (also called junk bonds) are issued by companies with lower credit ratings — they pay higher interest rates because there's more risk they won't repay. PGIM's credit research team tries to identify high-yield bonds that are attractively priced relative to their actual default risk, generating income while managing the downside.",
+    why:"Exposure to high yield bonds that may provide higher current income and potential capital appreciation.",
+    where:"",
+    url:"https://www.pgim.com/investments/funds/pgim-high-yield-fund",
+    holdings:[]},
+
+  {id:28,name:"Invesco Taxable Muni",ticker:"BAB",cls:"Bonds",
+    what:"Tracks the ICE BofAML US Taxable Municipal Securities Plus Index — U.S. dollar-denominated taxable municipal debt.",
+    plain:"Most muni bonds are tax-exempt, but taxable munis exist too — they typically offer higher stated yields to compensate for their taxability, which can still be attractive on a risk-adjusted basis. BAB owns these taxable munis, giving exposure to high-quality government-backed bonds with yields somewhere between Treasuries and corporate bonds.",
+    why:"High-quality taxable municipal bond exposure with attractive yield and diversification benefits between Treasuries and corporate bonds.",
+    where:"",
+    url:"https://www.invesco.com/us/financial-products/etfs/product-detail?audienceType=Investor&ticker=BAB",
+    holdings:[]},
+
+  {id:29,name:"Janus Henderson AAA CLO ETF",ticker:"JAAA",cls:"Bonds",
+    what:"Invests in high-quality (AAA-rated) Collateralized Loan Obligations seeking consistent risk-adjusted returns with low correlation to traditional fixed income.",
+    plain:"CLOs are pools of corporate loans packaged into securities and sliced by risk level. JAAA only buys the safest slice — AAA-rated, which is the first to be repaid and historically has had near-zero defaults. Because CLO rates float with short-term interest rates, JAAA does well when rates are high and doesn't suffer the price declines that fixed-rate bonds do when rates rise.",
+    why:"High-quality, floating rate CLO market exposure in a liquid, transparent ETF structure. Low correlation to traditional fixed income.",
+    where:"",
+    url:"https://janushenderson.com/en-us/investor/products/jaaa-janus-henderson-aaa-clo-etf/",
+    holdings:[]},
+
+  {id:30,name:"First Trust Preferred Stock",ticker:"FPE",cls:"Bonds",
+    what:"Actively managed fund seeking total return and current income by investing at least 80% in preferred securities and income-producing debt securities.",
+    plain:"Preferred stock sits between common stock and bonds in the capital structure — it pays a fixed dividend like a bond but represents ownership like a stock. If a company runs into trouble, preferred shareholders get paid before common stockholders but after bondholders. FPE's active management tries to find the most attractively priced preferred securities across financials and other sectors.",
+    why:"Income-oriented exposure through hybrid securities offering higher yields than traditional bonds.",
+    where:"",
+    url:"https://www.ftportfolios.com/retail/etf/ETFsummary.aspx?Ticker=FPE",
+    holdings:[]},
+
+  {id:31,name:"AQR Multi Strat",ticker:"QDSIX",cls:"Alternatives",
+    what:"AQR Diversifying Strategies Fund allocating to six AQR alternative mutual funds using tactical positioning across multiple alternative strategies.",
+    plain:"AQR is one of the most respected quantitative investment firms in the world. This fund combines six of their alternative strategies — things like market-neutral equity (long cheap stocks, short expensive ones), trend-following, and arbitrage — into a single allocation. The goal is to generate positive returns that have almost no relationship to whether stocks or bonds are going up or down. Think of it as 'return that shows up when everything else is struggling.'",
+    why:"Diversifying source seeking results with reduced correlation to stocks and bonds. Helpful for risk reduction or return enhancement.",
+    where:"",
+    url:"https://funds.aqr.com/funds/alternatives/aqr-diversifying-strategies-fund",
+    holdings:["AQRRZ (29.95%)","QMNRX (19.34%)","QSPRX (13.31%)","QGMRX (12.18%)"]},
+
+  {id:32,name:"BlackRock Commodities",ticker:"BICSX",cls:"Alternatives",
+    what:"Invests approximately equally across two strategies: commodity-linked derivatives and equity investments in commodity-related companies.",
+    plain:"Half of the fund tracks commodity prices directly through futures contracts (gold, oil, copper, wheat, etc.), and the other half owns stocks of companies that produce those commodities (miners, energy producers, agricultural companies). Together they give broad exposure to real assets — things that tend to rise when inflation picks up and that move differently from financial assets like stocks and bonds.",
+    why:"Complete exposure to commodities across the entire value chain through both futures and equities.",
+    where:"",
+    url:"https://www.blackrock.com/us/individual/products/239572/",
+    holdings:["TSX: NTR (4.43%)","CTVA (3.48%)","XOM (2.45%)"]},
+
+  {id:33,name:"Versus Real Estate",ticker:"VCMIX",cls:"Alternatives",
+    what:"Harrison Street Estate Fund LLC — a non-diversified closed-end interval fund providing exposure to the broad capital structure of real estate.",
+    plain:"Unlike BIREX which owns publicly traded REITs, VCMIX invests in private real estate — actual buildings and properties not listed on a stock exchange. This gives access to returns that don't fluctuate with daily market sentiment. The tradeoff is liquidity: you can only redeem shares at set intervals rather than selling any time like a public fund. Best thought of as a long-term, low-volatility real estate allocation.",
+    why:"Exposure to both private and public real estate across equity and debt — a more complete real estate allocation than public REITs alone.",
+    where:"",
+    url:"https://www.harrisonst.com/",
+    holdings:["CBRE US Logistics Partners (11.64%)","CLARION LION PROPERTIES FUND (8.62%)","INVESCO CORE REAL ESTATE USA (7.68%)"]},
+
+  {id:34,name:"Versus Real Assets",ticker:"VCRRX",cls:"Alternatives",
+    what:"Harrison Street Real Assets Fund LLC — a closed-end interval fund seeking long-term real returns through private infrastructure, farmland, and timberland.",
+    plain:"Owns physical assets like farmland, timberland, and infrastructure — things that produce steady income and tend to appreciate with inflation. Farmland generates rent from farmers; timberland generates revenue from harvesting lumber; infrastructure generates fees from users. These assets are highly illiquid and not publicly traded, which is why returns tend to be smooth and uncorrelated to the stock market.",
+    why:"Core real assets holding providing inflation-linked returns through private infrastructure, farmland, and timberland.",
+    where:"",
+    url:"https://www.harrisonst.com/",
+    holdings:["Harrison Street Social Infrastructure Fund (10.98%)","BTG Pactual US Timberland (10.91%)","IFC Core Farmland Fund (7.51%)"]},
+
+  {id:35,name:"Cliffwater Private Credit",ticker:"CCLFX",cls:"Alternatives",
+    what:"Cliffwater Corporate Lending Fund — one of the largest allocators to private debt, delivering access to direct lending through a multi-lender model.",
+    plain:"Instead of buying publicly traded bonds, Cliffwater directly lends money to middle-market companies (those too small for public bond markets) at higher interest rates than those companies could get from traditional banks. Because these loans aren't publicly traded, they're illiquid — but they pay meaningfully higher yields as compensation. Cliffwater uses multiple lenders rather than picking loans itself, which diversifies the credit risk.",
+    why:"Middle market loan exposure with high income and limited downside risk during periods of volatility — historically low default losses relative to yield earned.",
+    where:"",
+    url:"https://www.cliffwater.com/cclfx",
+    holdings:["GVMXX (5.14%)","SILVERPF (4.59%)","BARINGPC (3.32%)"]},
+
+  {id:36,name:"Simplify Managed Futures",ticker:"CTA",cls:"Alternatives",
+    what:"Seeks long-term capital appreciation by systematically investing in futures contracts to create an absolute return profile with low correlation to equities.",
+    plain:"Managed futures funds use computer algorithms to identify price trends across hundreds of markets — stock indexes, bonds, currencies, commodities, and interest rates — and then bet on those trends continuing. If oil has been going up for months, the algorithm buys oil futures. If bonds have been falling, it goes short bonds. The key feature: it can go both long and short, which means it can make money in falling markets too. This is why managed futures tend to perform best during market crises — when stocks and bonds are both down, trends in other markets (like a dollar rally or commodity selloff) create opportunities. CTA specifically is a rules-based implementation of this classic hedge fund strategy in a liquid ETF wrapper.",
+    why:"Low correlation to both stocks and bonds. Provides meaningful diversification specifically during drawdown events when traditional portfolios suffer most.",
+    where:"",
+    url:"https://www.simplify.us/etfs/cta-simplify-managed-futures-strategy-etf",
+    holdings:["TREASURY BILL DN 7/25 (27.87%)","CORU5 COM (26.42%)","CORZ5 COM (20.15%)"]}
 ];
 
 let positions = [];
@@ -568,9 +467,7 @@ function loadPositions() {
       positions = SEED.map(p => ({...p}));
       savePositions();
     }
-  } catch(e) {
-    positions = SEED.map(p => ({...p}));
-  }
+  } catch(e) { positions = SEED.map(p => ({...p})); }
 }
 
 function savePositions() {
@@ -593,12 +490,10 @@ function badgeCls(cls) {
 function render() {
   const q = document.getElementById('search').value.toLowerCase().trim();
   const f = document.getElementById('filter').value;
-
   const filtered = positions.filter(p => {
     const matchCls = f === 'all' || p.cls === f;
-    const search = [p.name, p.ticker, p.what, p.why, p.where, ...(p.holdings||[])].join(' ').toLowerCase();
-    const matchQ = !q || search.includes(q);
-    return matchCls && matchQ;
+    const search = [p.name, p.ticker, p.what, p.plain, p.why, p.where, ...(p.holdings||[])].join(' ').toLowerCase();
+    return matchCls && (!q || search.includes(q));
   });
 
   const stocks = positions.filter(p => p.cls === 'Stocks').length;
@@ -613,11 +508,9 @@ function render() {
   `;
 
   const container = document.getElementById('cards');
+  if (!filtered.length) { container.innerHTML = '<div class="empty">No positions match your search.</div>'; return; }
 
-  if (!filtered.length) {
-    container.innerHTML = '<div class="empty">No positions match your search.</div>';
-    return;
-  }
+  const showHoldings = p => (p.cls === 'Stocks' || p.cls === 'Alternatives') && p.holdings && p.holdings.length;
 
   container.innerHTML = filtered.map(p => `
     <div class="card" id="card-${p.id}">
@@ -628,17 +521,18 @@ function render() {
         <svg class="chevron" id="chev-${p.id}" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
       <div class="card-body" id="body-${p.id}">
-        <div class="card-grid">
-          ${p.what ? `<div class="card-section card-full"><div class="card-section-label">What it is</div><div class="card-section-text">${p.what}</div></div>` : ''}
-          ${p.why ? `<div class="card-section card-full"><div class="card-section-label">Why we own it</div><div class="card-section-text">${p.why}</div></div>` : ''}
-          ${p.where ? `<div class="card-section card-full"><div class="card-section-label">Where we own it</div><div class="card-section-text">${p.where}</div></div>` : ''}
-          ${p.holdings && p.holdings.length ? `
-            <div class="card-section card-full">
-              <div class="card-section-label">Largest holdings</div>
-              <div class="holdings">${p.holdings.map(h => `<span class="holding">${h}</span>`).join('')}</div>
-            </div>` : ''}
+        <div class="card-sections">
+          ${p.what ? `<div><div class="card-section-label">What it is</div><div class="card-section-text">${p.what}</div></div>` : ''}
+          ${p.plain ? `<div><div class="card-section-label">In plain English</div><div class="card-section-text">${p.plain}</div></div>` : ''}
+          ${p.why ? `<div><div class="card-section-label">Why we own it</div><div class="card-section-text">${p.why}</div></div>` : ''}
+          ${p.where ? `<div><div class="card-section-label">Where we own it</div><div class="card-section-text">${p.where}</div></div>` : ''}
+          ${showHoldings(p) ? `<div><div class="card-section-label">Largest holdings</div><div class="holdings">${p.holdings.map(h=>`<span class="holding">${h}</span>`).join('')}</div></div>` : ''}
         </div>
         <div class="card-actions">
+          ${p.url ? `<button class="btn-link" onclick="window.open('${p.url}','_blank')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Fund page
+          </button>` : ''}
           <button class="btn-ghost" onclick="openModal(${p.id})">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             Edit
@@ -657,8 +551,7 @@ function toggle(id) {
   const body = document.getElementById('body-' + id);
   const chev = document.getElementById('chev-' + id);
   const open = body.classList.toggle('open');
-  if (open) chev.classList.add('open');
-  else chev.classList.remove('open');
+  if (open) chev.classList.add('open'); else chev.classList.remove('open');
 }
 
 function openModal(id) {
@@ -669,8 +562,10 @@ function openModal(id) {
   document.getElementById('f-ticker').value = p && p.ticker ? p.ticker : '';
   document.getElementById('f-class').value = p && p.cls ? p.cls : 'Stocks';
   document.getElementById('f-what').value = p && p.what ? p.what : '';
+  document.getElementById('f-plain').value = p && p.plain ? p.plain : '';
   document.getElementById('f-why').value = p && p.why ? p.why : '';
   document.getElementById('f-where').value = p && p.where ? p.where : '';
+  document.getElementById('f-url').value = p && p.url ? p.url : '';
   document.getElementById('f-holdings').value = p && p.holdings ? p.holdings.join(', ') : '';
   document.getElementById('modal-overlay').classList.add('open');
   setTimeout(() => document.getElementById('f-name').focus(), 50);
@@ -686,25 +581,21 @@ function savePosition() {
   const ticker = document.getElementById('f-ticker').value.trim().toUpperCase();
   if (!name) { alert('Position name is required.'); return; }
   if (!ticker) { alert('Ticker is required.'); return; }
-
   const p = {
     id: editId !== null ? editId : nextId++,
-    name,
-    ticker,
+    name, ticker,
     cls: document.getElementById('f-class').value,
     what: document.getElementById('f-what').value.trim(),
+    plain: document.getElementById('f-plain').value.trim(),
     why: document.getElementById('f-why').value.trim(),
     where: document.getElementById('f-where').value.trim(),
+    url: document.getElementById('f-url').value.trim(),
     holdings: document.getElementById('f-holdings').value.split(',').map(s => s.trim()).filter(Boolean)
   };
-
   if (editId !== null) {
     const idx = positions.findIndex(x => x.id === editId);
     if (idx > -1) positions[idx] = p;
-  } else {
-    positions.push(p);
-  }
-
+  } else { positions.push(p); }
   savePositions();
   closeModal();
   render();
@@ -713,25 +604,16 @@ function savePosition() {
 
 function deletePos(id) {
   const p = positions.find(x => x.id === id);
-  if (!p) return;
-  if (!confirm('Delete ' + p.name + '?')) return;
+  if (!p || !confirm('Delete ' + p.name + '?')) return;
   positions = positions.filter(x => x.id !== id);
   savePositions();
   render();
   showToast('Position deleted.');
 }
 
-document.getElementById('modal-overlay').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-document.getElementById('search').addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { this.value = ''; render(); }
-});
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
+document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.getElementById('search').addEventListener('keydown', function(e) { if (e.key === 'Escape') { this.value = ''; render(); } });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
 loadPositions();
 render();
